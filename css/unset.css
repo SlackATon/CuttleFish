@@ -1,0 +1,23 @@
+/*
+    =====
+    Unset
+    =====
+*/
+
+*,
+*::before,
+*::after {
+	text-decoration: none;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+* + * {
+	margin: 1em 0 0;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
