@@ -1,5 +1,5 @@
 /* Require database and your models */
-const { db } = require('./server/db')
+const { db } = require('./server/')
 
 const seed = async () => {
 	try {
