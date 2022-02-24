@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const template = db.define('template', {})
+const Template = db.define('template', {})
 
-module.exports = template
+module.exports = Template
