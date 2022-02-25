@@ -17,8 +17,9 @@ router.post('/', async (req, res, next) => {
 	try {
 		const getBookmark = await Bookmark.findOne({ where: { name: req.body.name } })
 
-		if (getBookmark) return res.sendStatus(406)
-		else {
+		if (getBookmark) {
+			return res.sendStatus(406)
+		} else {
 			await Bookmark.create({ name: req.body.name })
 			return res.sendStatus(201)
 		}
@@ -56,6 +57,38 @@ router.get('/:bookmarkId', async (req, res, next) => {
 
 		if (getBookmark) return res.send(getBookmark)
 		else res.sendStatus(404)
+	} catch (err) {
+		next(err)
+	}
+})
+
+/* Update a bookmark. */
+router.put('/:bookmarkId', async (req, res, next) => {
+	try {
+		const bookmark = await Bookmark.findByPk(req.params.bookmarkId)
+
+		if (bookmark) {
+			await bookmark.update({ name: req.body.name })
+			res.sendStatus(200)
+		} else {
+			res.sendStatus(404)
+		}
+	} catch (err) {
+		next(err)
+	}
+})
+
+/* Delete a bookmark. */
+router.delete('/:bookmarkId', async (req, res, next) => {
+	try {
+		const bookmark = await Bookmark.findByPk(req.params.bookmarkId)
+
+		if (bookmark) {
+			Bookmark.destroy({ where: { id: bookmark.id } })
+			res.sendStatus(200)
+		} else {
+			res.sendStatus(404)
+		}
 	} catch (err) {
 		next(err)
 	}
