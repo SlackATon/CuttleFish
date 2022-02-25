@@ -3,7 +3,6 @@ const db = require('./db')
 
 /* Models from './models' folder. */
 const Tag = require('./models/tag')
-const User = require('./models/user')
 const Bookmark = require('./models/bookmark')
 
 /* Create model relations. */
@@ -14,6 +13,5 @@ Bookmark.belongsToMany(Tag, { through: 'bookmark_tag' })
 module.exports = {
 	db,
 	Tag,
-	User,
 	Bookmark
 }
