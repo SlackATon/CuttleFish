@@ -13,4 +13,16 @@ const Bookmark = db.define('bookmark', {
 	}
 })
 
+Bookmark.tagged = function () {
+	const bookmarks = this.findAll()
+	const tagged = bookmarks.filter(bookmark => bookmark.countTags())
+	return tagged
+}
+
+Bookmark.untagged = function () {
+	const bookmarks = this.findAll()
+	const untagged = bookmarks.filter(bookmark => !bookmark.countTags())
+	return untagged
+}
+
 module.exports = Bookmark
