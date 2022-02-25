@@ -1,6 +1,7 @@
 const router = require('express').Router()
 
 /* Link all your APIs to this file for one export. */
+router.use('/bookmarks', require('./bookmarks'))
 
 router.use(function (req, res, next) {
 	const err = new Error('api not found')
