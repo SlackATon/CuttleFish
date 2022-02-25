@@ -15,12 +15,17 @@ router.get('/', async (req, res, next) => {
 /* Add a bookmark. */
 router.post('/', async (req, res, next) => {
 	try {
-		const getBookmark = await Bookmark.findOne({ where: { name: req.body.name } })
+		const data = {
+			title: req.body.title,
+			description: req.body.description,
+			url: req.body.url
+		}
+		const getBookmark = await Bookmark.findOne({ where: { title: req.body.title } })
 
 		if (getBookmark) {
 			return res.sendStatus(406)
 		} else {
-			await Bookmark.create({ name: req.body.name })
+			await Bookmark.create({ ...data })
 			return res.sendStatus(201)
 		}
 	} catch (err) {
@@ -65,10 +70,16 @@ router.get('/:bookmarkId', async (req, res, next) => {
 /* Update a bookmark. */
 router.put('/:bookmarkId', async (req, res, next) => {
 	try {
+		const data = {
+			title: req.body.title,
+			description: req.body.description,
+			url: req.body.url
+		}
+
 		const bookmark = await Bookmark.findByPk(req.params.bookmarkId)
 
 		if (bookmark) {
-			await bookmark.update({ name: req.body.name })
+			await bookmark.update({ ...data })
 			res.sendStatus(200)
 		} else {
 			res.sendStatus(404)
