@@ -13,6 +13,18 @@ const Bookmark = db.define('bookmark', {
 	}
 })
 
+Bookmark.addHook('beforeValidate', data => {
+	const { name } = data
+
+	if (name.endsWith('/')) {
+		data.name = name.slice(name, name.length - 1)
+		return data
+	}
+
+	return data
+})
+
+/* Class methonds. */
 Bookmark.tagged = function () {
 	const bookmarks = this.findAll()
 	const tagged = bookmarks.filter(bookmark => bookmark.countTags())
