@@ -7,9 +7,7 @@ function Toolbar() {
 			<h3 className="main__top-bar-name">News & Social</h3>
 
 			<div className="main__top-bar-advance-controls">
-				<button
-					handleClick=""
-					className="main__top-bar-btn main__top-bar-btn-advance">
+				<button className="main__top-bar-btn main__top-bar-btn-advance">
 					...
 				</button>
 

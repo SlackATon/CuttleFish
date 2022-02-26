@@ -8,7 +8,7 @@ function Main() {
 	return (
 		<div className="grid">
 			<Sidebar />
-			<div class="main">
+			<div className="main">
 				<Toolbar />
 				<BookmarkContainer />
 			</div>
