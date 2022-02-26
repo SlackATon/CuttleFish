@@ -32,7 +32,9 @@ Bookmark.tagged = function () {
 
 Bookmark.untagged = function () {
 	const bookmarks = this.findAll()
-	const untagged = bookmarks.filter(bookmark => !bookmark.countTags())
+	const untagged = bookmarks.filter(
+		async bookmark => (await bookmark.countTags()) === 0
+	)
 	return untagged
 }
 

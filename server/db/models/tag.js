@@ -35,7 +35,7 @@ Tag.hasBookmarks = function () {
 
 Tag.noBookmarks = function () {
 	const tags = this.findAll()
-	const hasBookmarks = tags.filter(tag => !tag.countBookmarks())
+	const hasBookmarks = tags.filter(async tag => (await tag.countBookmarks()) === 0)
 	return hasBookmarks
 }
 
