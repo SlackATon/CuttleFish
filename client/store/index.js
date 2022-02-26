@@ -3,11 +3,11 @@ import { createLogger } from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 
 /* Import reducers. */
-import template from './template'
+import tags from './tags'
 
 /* Combine reducers. */
 const reducer = combineReducers({
-	temp: template
+	tags: tags
 })
 
 const middleware = applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
