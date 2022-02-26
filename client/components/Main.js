@@ -1,7 +1,13 @@
 import React from 'react'
 
+import Sidebar from './Sidebar'
+
 function Main() {
-	return <h1>Hello</h1>
+	return (
+		<div className="grid">
+			<Sidebar />
+		</div>
+	)
 }
 
 export default Main
