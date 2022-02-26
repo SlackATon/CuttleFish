@@ -2,7 +2,7 @@ const router = require('express').Router()
 
 const { Bookmark, Tag } = require('../db/index')
 
-/* Find all bookmarks. */
+/* Find all tags. */
 router.get('/', async (req, res, next) => {
 	try {
 		const tags = await Tag.findAll({ include: Bookmark })
@@ -12,7 +12,7 @@ router.get('/', async (req, res, next) => {
 	}
 })
 
-/* Add a bookmark. */
+/* Add a tag. */
 router.post('/', async (req, res, next) => {
 	try {
 		const getTag = await Tag.findOne({ where: { name: req.body.name } })
@@ -28,14 +28,70 @@ router.post('/', async (req, res, next) => {
 	}
 })
 
-/* Find all bookmarks with tags. */
+/* Find all tags with bookmarks. */
+router.get('/hasBookmarks', async (req, res, next) => {
+	try {
+		const tags = await Tag.hasBookmarks()
+		res.json(tags)
+	} catch (err) {
+		next(err)
+	}
+})
 
-/* Find all bookmarks without tags. */
+/* Find all tags without bookmarks. */
+router.get('/nobookmarks', async (req, res, next) => {
+	try {
+		const tags = await Tag.noBookmarks()
+		res.json(tags)
+	} catch (err) {
+		next(err)
+	}
+})
 
-/* Find by bookmarkId. */
+/* Find by tagId. */
+router.get('/:tagId', async (req, res, next) => {
+	try {
+		const getTag = await Tag.findByPk(req.params.tagId, {
+			include: Bookmark
+		})
 
-/* Update a bookmark. */
+		if (getTag) return res.send(getTag)
+		else res.sendStatus(404)
+	} catch (err) {
+		next(err)
+	}
+})
+
+/* Update a tag. */
+router.put('/:tagId', async (req, res, next) => {
+	try {
+		const tag = await Tag.findByPk(req.params.tagId)
+
+		if (tag) {
+			await tag.update({ name: req.body.name })
+			res.sendStatus(200)
+		} else {
+			res.sendStatus(404)
+		}
+	} catch (err) {
+		next(err)
+	}
+})
 
 /* Delete a bookmark. */
+router.delete('/:tagId', async (req, res, next) => {
+	try {
+		const tag = await Tag.findByPk(req.params.tagId)
+
+		if (tag) {
+			Tag.destroy({ where: { id: tag.id } })
+			res.sendStatus(200)
+		} else {
+			res.sendStatus(404)
+		}
+	} catch (err) {
+		next(err)
+	}
+})
 
 module.exports = router
