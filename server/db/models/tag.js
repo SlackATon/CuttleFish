@@ -26,4 +26,17 @@ Tag.addHook('beforeValidate', data => {
 	data.name = name
 })
 
+/* Class methonds. */
+Tag.hasBookmarks = function () {
+	const tags = this.findAll()
+	const hasBookmarks = tags.filter(tag => tag.countBookmarks())
+	return hasBookmarks
+}
+
+Tag.noBookmarks = function () {
+	const tags = this.findAll()
+	const hasBookmarks = tags.filter(tag => !tag.countBookmarks())
+	return hasBookmarks
+}
+
 module.exports = Tag
