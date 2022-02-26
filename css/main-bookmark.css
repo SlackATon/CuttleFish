@@ -1,0 +1,79 @@
+/*
+    =============
+    Main Bookmark
+    =============
+*/
+
+.main__bookmark {
+	margin: 1em auto 0;
+	background: purple;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.5em 1em;
+	text-align: left;
+	width: 90%;
+	border-radius: 4px;
+	box-shadow: 5px 5px transparent;
+	transition: box-shadow ease-in-out 0.5s;
+}
+
+.main__bookmark:hover {
+	box-shadow: 5px 5px red;
+}
+
+.main__bookmark + .main__bookmark {
+	margin-top: 1em;
+}
+
+.main__bookmark-icon {
+	width: 40px;
+	height: 40px;
+	/* width: 5%; */
+}
+
+.main__bookmark-icon-img {
+	border-radius: 3px;
+}
+
+.main__bookmark-title {
+	font-weight: bold;
+	/* font-family: monospace; */
+	width: 25%;
+	/* margin-left: -40px; */
+	background: rgb(219, 203, 203);
+}
+
+.main__bookmark-description {
+	width: 45%;
+	background: rgb(145, 215, 255);
+}
+
+.main__bookmark-date {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-family: monospace;
+	/* width: 20%; */
+	/* justify-self: flex-end; */
+}
+
+.main__bookmark-icon-wrapper {
+	background: orange;
+	display: flex;
+	/* flex-direction: row; */
+	/* justify-content: center; */
+	/* align-items: center; */
+}
+
+.main__bookmark-icon {
+	background-color: pink;
+	border-radius: 3px;
+	font-size: 1.2em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.main__bookmark-icon + .main__bookmark-icon {
+	margin-left: 0.5em;
+}

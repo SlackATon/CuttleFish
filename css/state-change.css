@@ -1,0 +1,31 @@
+/*
+    ============
+    State Change
+    ============
+*/
+
+.main__top-bar-advance-inner-controls--hidden {
+	display: none;
+}
+
+.main__top-bar-advance-inner-controls--visible {
+	position: absolute;
+	right: 0;
+	min-width: 6em;
+	background-color: #fff;
+	padding: 0.3em;
+	box-shadow: 10px 5px 5px red;
+}
+
+.main__top-bar-advance-inner-controls-btn {
+	display: block;
+	font-size: 0.88em;
+	width: 100%;
+	padding: 0.3em;
+	border-radius: 3px;
+	background: orange;
+}
+
+.main__top-bar-advance-inner-controls-btn + .main__top-bar-advance-inner-controls-btn {
+	margin-top: 0.3em;
+}
