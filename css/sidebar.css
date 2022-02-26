@@ -135,6 +135,9 @@
 	/* padding-bottom: 0.5em;
 	padding-right: 0.5em;
 	padding-left: 0.5em; */
+	justify-content: space-between;
+	/* align-items: center; */
+	grid-gap: 0.3em;
 }
 .sidebar__bookmark-li + .sidebar__bookmark-li {
 	/* padding-top: 0; */
@@ -143,17 +146,18 @@
 
 .sidebar__bookmark-title {
 	/* font-weight: bold; */
+	/* width: 35%; */
 }
 
-.sidebar__bookmark-title::after {
+/* .sidebar__bookmark-title::after {
 	content: '|';
 	display: inline-block;
 	padding: 0 0.3em;
 	font-weight: normal;
-}
+} */
 
 .sidebar__bookmark-description {
-	font-style: italic;
+	/* font-style: italic; */
 }
 
 .sidebar__bookmark-title,

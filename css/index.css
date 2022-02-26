@@ -48,5 +48,5 @@ a {
 
 .grid {
 	display: grid;
-	grid-template-columns: 23.5% 1fr;
+	grid-template-columns: 25em 1fr;
 }

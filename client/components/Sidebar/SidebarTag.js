@@ -2,19 +2,26 @@ import React from 'react'
 
 import SidebarTagBookmark from './SidebarTagBookmark'
 
-function SidebarTag() {
+function SidebarTag(props) {
+	// console.log(props.bookmarks)
 	return (
 		<li className="sidebar__tag-li">
 			<div className="sidebar__tag-inner">
 				<div className="sidebar__tag-icon">🍭</div>
 				<div className="sidebar__tag-link" href="#">
-					Chocolate Websites
+					{'#' + props.name}
 				</div>
-				<button className="sidebar__tag-count">5</button>
+				<button className="sidebar__tag-count">{props.bookmarks.length}</button>
 			</div>
 
 			<ul className="sidebar__bookmark-ul">
-				<SidebarTagBookmark />
+				{props.bookmarks.map(bookmark => (
+					<SidebarTagBookmark
+						key={bookmark.id}
+						title={bookmark.title}
+						description={bookmark.description}
+					/>
+				))}
 			</ul>
 		</li>
 	)
