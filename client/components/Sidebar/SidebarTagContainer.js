@@ -10,11 +10,11 @@ class SidebarTagContainer extends React.Component {
 	}
 
 	render() {
-		// console.log(this.props)
+		console.log(this.props.tags)
 		return (
 			<ul className="sidebar__tag-ul">
 				{this.props.tags.map(tag => (
-					<SidebarTag key={tag.id} name={tag.name} bookmarks={tag.bookmarks} />
+					<SidebarTag key={tag.id} tagData={tag} />
 				))}
 			</ul>
 		)

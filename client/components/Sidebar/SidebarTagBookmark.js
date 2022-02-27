@@ -5,9 +5,9 @@ function SidebarTagBookmark(props) {
 
 	return (
 		<li className="sidebar__bookmark-li">
-			<div className="sidebar__bookmark-title">{props.title}</div>
+			<div className="sidebar__bookmark-title">{props.tagBookmarks.title}</div>
 			<div className="sidebar__bookmark-description">
-				{ellipsis(props.description)}
+				{ellipsis(props.tagBookmarks.description)}
 			</div>
 		</li>
 	)
