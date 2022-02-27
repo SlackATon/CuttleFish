@@ -7,7 +7,9 @@ function SidebarTagBookmark(props) {
 		<li className="sidebar__bookmark-li">
 			<div className="sidebar__bookmark-title">{props.tagBookmarks.title}</div>
 			<div className="sidebar__bookmark-description">
-				{ellipsis(props.tagBookmarks.description)}
+				{props.tagBookmarks.description
+					? ellipsis(props.tagBookmarks.description)
+					: 'no title'}
 			</div>
 		</li>
 	)
