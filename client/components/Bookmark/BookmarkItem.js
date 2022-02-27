@@ -1,8 +1,6 @@
 import React from 'react'
 import { TiLink, TiEdit, TiTimes } from 'react-icons/ti'
 
-import BookmarkControls from './BookmarkControls'
-
 function BookmarkItem(props) {
 	const ellipsis = str => (str.length >= 35 ? str.slice(0, 35) + '...' : str)
 	console.log('==================>>>>>>>', props.bookmarkData.description)
