@@ -3,7 +3,18 @@ import { TiLink, TiEdit, TiTimes } from 'react-icons/ti'
 
 function BookmarkItem(props) {
 	const ellipsis = str => (str.length >= 35 ? str.slice(0, 35) + '...' : str)
-	console.log('==================>>>>>>>', props.bookmarkData.description)
+
+	const formatDate = timestamp => {
+		const getDate = Date(timestamp).split(' ')
+
+		const month = getDate[1]
+		const date = getDate[2]
+		const year = getDate[3]
+
+		return `${month} ${date} ${year}`
+	}
+
+	console.log('==================>>>>>>>', props.bookmarkData.createdAt)
 	return (
 		<div className="main__bookmark">
 			<div className="main__bookmark-icon">
@@ -22,7 +33,9 @@ function BookmarkItem(props) {
 					: 'no description'}
 			</div>
 
-			<div className="main__bookmark-date">mar 3rd 2020</div>
+			<div className="main__bookmark-date">
+				{formatDate(props.bookmarkData.createdAt)}
+			</div>
 
 			<div className="main__bookmark-icon-wrapper">
 				<div className="main__bookmark-icon">
