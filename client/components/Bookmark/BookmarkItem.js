@@ -2,7 +2,7 @@ import React from 'react'
 import { TiLink, TiEdit, TiTimes } from 'react-icons/ti'
 
 function BookmarkItem(props) {
-	const ellipsis = str => (str.length >= 35 ? str.slice(0, 35) + '...' : str)
+	const ellipsis = str => (str.length >= 60 ? str.slice(0, 60) + '...' : str)
 
 	const formatDate = timestamp => {
 		const getDate = Date(timestamp).split(' ')
