@@ -1,6 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-function SidebarUser() {
+function SidebarUser(props) {
+	console.log('+++++++', props.bookmarks)
 	return (
 		<div className="sidebar__user">
 			<div className="sidebar__user-right">
@@ -13,12 +15,22 @@ function SidebarUser() {
 			<div className="sidebar__user-left">
 				<h3 className="sidebar__user-row sidebar__user-name">Dean Hatch</h3>
 				<div className="sidebar__user-row sidebar__user-bookmarks">
-					10 bookmarks
+					{props.bookmarks.length
+						? props.bookmarks.length + ' bookmarks'
+						: 'no bookmarks'}
 				</div>
-				<div className="sidebar__user-row sidebar__user-tags">12 tags</div>
+				<div className="sidebar__user-row sidebar__user-tags">
+					{props.tags.length ? props.tags.length + ' tags' : 'no tags'}
+				</div>
 			</div>
 		</div>
 	)
 }
 
-export default SidebarUser
+const mapState = state => {
+	return {
+		tags: state.tags.all,
+		bookmarks: state.bookmarks.all
+	}
+}
+export default connect(mapState)(SidebarUser)
