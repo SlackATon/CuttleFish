@@ -2,7 +2,8 @@ import React from 'react'
 import { TiLink, TiEdit, TiTimes } from 'react-icons/ti'
 
 function BookmarkItem(props) {
-	const ellipsis = str => (str.length >= 60 ? str.slice(0, 60) + '...' : str)
+	const ellipsis = (str, chars) =>
+		str.length >= chars ? str.slice(0, chars) + '...' : str
 
 	const formatDate = timestamp => {
 		const getDate = Date(timestamp).split(' ')
@@ -17,19 +18,15 @@ function BookmarkItem(props) {
 	console.log('==================>>>>>>>', props.bookmarkData.createdAt)
 	return (
 		<div className="main__bookmark">
-			<div className="main__bookmark-icon">
-				<img
-					className="main__bookmark-icon-img"
-					src="https://picsum.photos/40/40"
-					alt=""
-				/>
-			</div>
+			{/* <div className="main__bookmark-icon">g</div> */}
 
-			<div className="main__bookmark-title">{props.bookmarkData.title}</div>
+			<div className="main__bookmark-title">
+				{props.bookmarkData.title ? ellipsis(props.bookmarkData.title, 27) : ''}
+			</div>
 
 			<div className="main__bookmark-description">
 				{props.bookmarkData.description
-					? ellipsis(props.bookmarkData.description)
+					? ellipsis(props.bookmarkData.description, 70)
 					: 'no description'}
 			</div>
 
@@ -38,13 +35,16 @@ function BookmarkItem(props) {
 			</div>
 
 			<div className="main__bookmark-icon-wrapper">
-				<div className="main__bookmark-icon">
+				<a
+					target="_blank"
+					href={props.bookmarkData.url}
+					className="main__bookmark-icon">
 					<TiLink />
-				</div>
-				<div className="main__bookmark-icon">
+				</a>
+				<div href="" className="main__bookmark-icon">
 					<TiEdit />
 				</div>
-				<div className="main__bookmark-icon">
+				<div href="" className="main__bookmark-icon">
 					<TiTimes />
 				</div>
 			</div>
