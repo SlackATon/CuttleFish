@@ -40,15 +40,17 @@
 .main__bookmark-title {
 	font-weight: bold;
 	/* font-family: monospace; */
-	width: 23%;
+	/* width: 23%; */
 	margin-left: 0.5em;
+
 	/* background: rgb(219, 203, 203); */
 }
 
 .main__bookmark-description {
-	width: 45%;
+	/* width: 45%; */
 	margin-left: 0.5em;
 	font-size: 0.93em;
+	flex: 2 1 auto;
 	/* background: rgb(18, 18, 19); */
 }
 
@@ -60,16 +62,15 @@
 	font-size: 0.83em;
 	/* width: 20%; */
 	/* justify-self: flex-end; */
+	/* justify-self: end; */
 	/* background: rgb(219, 203, 203); */
 }
 
 .main__bookmark-icon-wrapper {
 	margin-left: 0.5em;
-	/* background: orange; */
 	display: flex;
-	/* flex-direction: row; */
-	/* justify-content: center; */
-	/* align-items: center; */
+	/* background: pink; */
+	/* justify-self: end; */
 }
 
 .main__bookmark-icon {
