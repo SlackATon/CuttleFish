@@ -1,8 +1,11 @@
 import React from 'react'
+import { TiLink, TiEdit, TiTimes } from 'react-icons/ti'
 
 import BookmarkControls from './BookmarkControls'
 
-function BookmarkItem() {
+function BookmarkItem(props) {
+	const ellipsis = str => (str.length >= 35 ? str.slice(0, 35) + '...' : str)
+	console.log('==================>>>>>>>', props.bookmarkData.description)
 	return (
 		<div className="main__bookmark">
 			<div className="main__bookmark-icon">
@@ -13,18 +16,26 @@ function BookmarkItem() {
 				/>
 			</div>
 
-			<div className="main__bookmark-title">Laughing Bacchus Winecellars</div>
+			<div className="main__bookmark-title">{props.bookmarkData.title}</div>
 
 			<div className="main__bookmark-description">
-				Lorem ipsum dolor sit amet consectetur adipisicing.
+				{props.bookmarkData.description
+					? ellipsis(props.bookmarkData.description)
+					: 'no description'}
 			</div>
 
 			<div className="main__bookmark-date">mar 3rd 2020</div>
 
 			<div className="main__bookmark-icon-wrapper">
-				<BookmarkControls />
-				<BookmarkControls />
-				<BookmarkControls />
+				<div className="main__bookmark-icon">
+					<TiLink />
+				</div>
+				<div className="main__bookmark-icon">
+					<TiEdit />
+				</div>
+				<div className="main__bookmark-icon">
+					<TiTimes />
+				</div>
 			</div>
 		</div>
 	)

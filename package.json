@@ -24,6 +24,7 @@
 		"pg": "^8.3.0",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6",
+		"react-icons": "^4.3.1",
 		"react-redux": "^5.0.7",
 		"react-router": "^4.3.1",
 		"react-router-dom": "^4.2.2",
