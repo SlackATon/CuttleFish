@@ -1,8 +1,32 @@
 import React from 'react'
+import { FiBookmark, FiHash } from 'react-icons/fi'
 import { connect } from 'react-redux'
 
 function SidebarUser(props) {
-	console.log('+++++++', props.bookmarks)
+	const bookmarkCount = () => {
+		if (props.bookmarks.length) {
+			return (
+				<div>
+					<FiHash /> {props.bookmarks.length + ' bookmarks'}
+				</div>
+			)
+		} else {
+			return 'no bookmarks'
+		}
+	}
+
+	const tagCount = () => {
+		if (props.tags.length) {
+			return (
+				<div>
+					<FiBookmark /> {props.tags.length + ' tags'}
+				</div>
+			)
+		} else {
+			return 'no tags'
+		}
+	}
+
 	return (
 		<div className="sidebar__user">
 			<div className="sidebar__user-right">
@@ -15,13 +39,9 @@ function SidebarUser(props) {
 			<div className="sidebar__user-left">
 				<h3 className="sidebar__user-row sidebar__user-name">Dean Hatch</h3>
 				<div className="sidebar__user-row sidebar__user-bookmarks">
-					{props.bookmarks.length
-						? props.bookmarks.length + ' bookmarks'
-						: 'no bookmarks'}
+					{bookmarkCount()}
 				</div>
-				<div className="sidebar__user-row sidebar__user-tags">
-					{props.tags.length ? props.tags.length + ' tags' : 'no tags'}
-				</div>
+				<div className="sidebar__user-row sidebar__user-tags">{tagCount()}</div>
 			</div>
 		</div>
 	)

@@ -1,4 +1,5 @@
 import React from 'react'
+import { HiHashtag } from 'react-icons/hi'
 
 import SidebarTagBookmark from './SidebarTagBookmark'
 
@@ -36,8 +37,11 @@ class SidebarTag extends React.Component {
 				className="sidebar__tag-li">
 				<div className="sidebar__tag-inner">
 					<div className="sidebar__tag-icon">🍭</div>
-					<div className="sidebar__tag-link" href="#">
-						{'#' + this.props.tagData.name}
+					<div className="sidebar__tag-link">
+						<div className="sidebar__tag-hastag">
+							<HiHashtag />
+						</div>
+						{this.props.tagData.name}
 					</div>
 					<button className="sidebar__tag-count">
 						{this.props.tagData.bookmarks.length}
