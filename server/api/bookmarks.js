@@ -53,6 +53,40 @@ router.get('/untagged', async (req, res, next) => {
 	}
 })
 
+/* Add tag to bookmark. */
+router.get('/addtag', async (req, res, next) => {
+	try {
+		const bookmark = await Bookmark.findByPk(req.body.bookmarkId)
+		const tag = await Tag.findByPk(req.body.tagId)
+
+		if (bookmark && tag) {
+			bookmark.addTag(req.body.tagId)
+			res.sendStatus(200)
+		} else {
+			res.sendStatus(404)
+		}
+	} catch (err) {
+		next(err)
+	}
+})
+
+/* Remove tag from bookmark. */
+router.get('/removetag', async (req, res, next) => {
+	try {
+		const bookmark = await Bookmark.findByPk(req.body.bookmarkId)
+		const tag = await Tag.findByPk(req.body.tagId)
+
+		if (bookmark && tag) {
+			bookmark.removeTag(req.body.tagId)
+			res.sendStatus(200)
+		} else {
+			res.sendStatus(404)
+		}
+	} catch (err) {
+		next(err)
+	}
+})
+
 /* Find by bookmarkId. */
 router.get('/:bookmarkId', async (req, res, next) => {
 	try {
