@@ -1,15 +1,18 @@
 import React from 'react'
 
 function SidebarTagBookmark(props) {
-	const ellipsis = str => (str.length >= 35 ? str.slice(0, 35) + '...' : str)
+	const ellipsis = (str, chars) =>
+		str.length >= chars ? str.slice(0, chars) + '...' : str
 
 	return (
 		<li className="sidebar__bookmark-li">
-			<div className="sidebar__bookmark-title">{props.tagBookmarks.title}</div>
+			<div className="sidebar__bookmark-title">
+				{ellipsis(props.tagBookmarks.title, 14)}
+			</div>
 			<div className="sidebar__bookmark-description">
 				{props.tagBookmarks.description
-					? ellipsis(props.tagBookmarks.description)
-					: 'no title'}
+					? ellipsis(props.tagBookmarks.description, 27)
+					: ''}
 			</div>
 		</li>
 	)
