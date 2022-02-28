@@ -1,4 +1,6 @@
 const router = require('express').Router()
+const axios = require('axios')
+const cheerio = require('cheerio')
 
 const { Bookmark, Tag } = require('../db/index')
 
@@ -15,17 +17,27 @@ router.get('/', async (req, res, next) => {
 /* Add a bookmark. */
 router.post('/', async (req, res, next) => {
 	try {
-		const data = {
-			title: req.body.title,
-			description: req.body.description,
-			url: req.body.url
-		}
-		const getBookmark = await Bookmark.findOne({ where: { title: req.body.title } })
+		let url = req.body.url
 
-		if (getBookmark) {
-			return res.sendStatus(406)
+		if (url.endsWith('/')) {
+			url = url.slice(url, url.length - 1)
+		}
+
+		const bookmark = await Bookmark.findOne({ where: { url } })
+
+		if (bookmark) {
+			return res.sendStatus(406) /* Bookmark already in database. */
 		} else {
-			await Bookmark.create({ ...data })
+			const { data } = await axios.get(req.body.url)
+			const $ = cheerio.load(data)
+			let title = $('title').html()
+			let description = $("meta[name='description']").attr('content')
+
+			await Bookmark.create({
+				url: url,
+				title: title || '',
+				description: description || ''
+			})
 			return res.sendStatus(201)
 		}
 	} catch (err) {
@@ -63,7 +75,7 @@ router.get('/addtag', async (req, res, next) => {
 			bookmark.addTag(req.body.tagId)
 			res.sendStatus(200)
 		} else {
-			res.sendStatus(404)
+			res.sendStatus(404) /* Bookmark or tag does not exist. */
 		}
 	} catch (err) {
 		next(err)
@@ -80,7 +92,7 @@ router.get('/removetag', async (req, res, next) => {
 			bookmark.removeTag(req.body.tagId)
 			res.sendStatus(200)
 		} else {
-			res.sendStatus(404)
+			res.sendStatus(404) /* Bookmark or tag does not exist. */
 		}
 	} catch (err) {
 		next(err)
@@ -95,7 +107,7 @@ router.get('/:bookmarkId', async (req, res, next) => {
 		})
 
 		if (getBookmark) return res.send(getBookmark)
-		else res.sendStatus(404)
+		else res.sendStatus(404) /* Bookmark does not exist. */
 	} catch (err) {
 		next(err)
 	}
@@ -132,7 +144,7 @@ router.delete('/:bookmarkId', async (req, res, next) => {
 			Bookmark.destroy({ where: { id: bookmark.id } })
 			res.sendStatus(200)
 		} else {
-			res.sendStatus(404)
+			res.sendStatus(404) /* Bookmark does not exist. */
 		}
 	} catch (err) {
 		next(err)
