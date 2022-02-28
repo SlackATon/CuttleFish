@@ -27,30 +27,17 @@
 	margin-top: 1em;
 }
 
-/* .main__bookmark-icon {
-	width: 40px;
-	height: 40px;
-	border-radius: 3px;
-	background: rgb(173, 149, 149);
-} */
-
 .main__bookmark-title {
 	font-weight: bold;
-	/* font-family: monospace; */
-
 	margin-left: 0.5em;
 	min-width: 5em;
 	max-width: 17em;
-
-	/* background: rgb(219, 203, 203); */
 }
 
 .main__bookmark-description {
-	/* width: 45%; */
 	margin-left: 0.5em;
 	font-size: 0.93em;
 	flex: 2 1 auto;
-	/* background: rgb(18, 18, 19); */
 }
 
 .main__bookmark-date {
@@ -59,17 +46,11 @@
 	text-transform: uppercase;
 	font-family: monospace;
 	font-size: 0.83em;
-	/* width: 20%; */
-	/* justify-self: flex-end; */
-	/* justify-self: end; */
-	/* background: rgb(219, 203, 203); */
 }
 
 .main__bookmark-icon-wrapper {
 	margin-left: 0.5em;
 	display: flex;
-	/* background: pink; */
-	/* justify-self: end; */
 }
 
 .main__bookmark-icon {
@@ -88,9 +69,3 @@
 .main__bookmark-icon + .main__bookmark-icon {
 	margin-left: 0.5em;
 }
-
-/* .main__bookmark-icon-link {
-	display: block;
-	font-size: 1.2em;
-	line-height: 1.2em;
-} */

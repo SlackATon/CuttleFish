@@ -61,7 +61,6 @@
 }
 
 .sidebar__tag-ul {
-	/* background: rgb(230, 70, 70); */
 	padding: 0.5em 0.5em;
 }
 
@@ -82,7 +81,6 @@
 }
 
 .sidebar__tag-inner {
-	/* background-color: blue; */
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -95,7 +93,6 @@
 	height: 3em;
 	font-size: 0.9em;
 	display: block;
-	/* background: var(--clr-dark-accent); */
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -128,36 +125,14 @@
 }
 
 .sidebar__bookmark-li {
-	/* background-color: rgb(48, 121, 102); */
 	background: var(--clr-dark-accent);
 	display: flex;
 	padding: 0.5em;
-	/* padding-bottom: 0.5em;
-	padding-right: 0.5em;
-	padding-left: 0.5em; */
 	justify-content: space-between;
-	/* align-items: center; */
 	grid-gap: 0.3em;
 }
 .sidebar__bookmark-li + .sidebar__bookmark-li {
-	/* padding-top: 0; */
 	border-top: 2px solid var(--clr-dark-light);
-}
-
-.sidebar__bookmark-title {
-	/* font-weight: bold; */
-	/* width: 35%; */
-}
-
-/* .sidebar__bookmark-title::after {
-	content: '|';
-	display: inline-block;
-	padding: 0 0.3em;
-	font-weight: normal;
-} */
-
-.sidebar__bookmark-description {
-	/* font-style: italic; */
 }
 
 .sidebar__bookmark-title,
