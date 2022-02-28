@@ -29,3 +29,13 @@
 .main__top-bar-advance-inner-controls-btn + .main__top-bar-advance-inner-controls-btn {
 	margin-top: 0.3em;
 }
+
+.main__bookmark-icon-hidden {
+	/* background: orange;
+
+	position: absolute;
+	width: 12em;
+	bottom: -150%;
+	left: 0;
+	z-index: 1; */
+}
