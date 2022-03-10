@@ -7,7 +7,6 @@ const Bookmark = db.define('bookmark', {
 	url: {
 		type: Sequelize.STRING,
 		allowNull: false,
-		unique: true,
 		validate: { notEmpty: false, isUrl: true }
 	}
 })
@@ -22,20 +21,5 @@ Bookmark.addHook('beforeValidate', data => {
 
 	return data
 })
-
-/* Class methonds. */
-Bookmark.tagged = function () {
-	const bookmarks = this.findAll()
-	const tagged = bookmarks.filter(bookmark => bookmark.countTags())
-	return tagged
-}
-
-Bookmark.untagged = function () {
-	const bookmarks = this.findAll()
-	const untagged = bookmarks.filter(
-		async bookmark => (await bookmark.countTags()) === 0
-	)
-	return untagged
-}
 
 module.exports = Bookmark
