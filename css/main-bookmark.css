@@ -93,9 +93,19 @@
 	list-style-type: none;
 }
 
+.main__bookmark-icon-tags-li-hastag {
+	/* font-size: 0.63em; */
+	/* background-color: orange; */
+}
+
 .main__bookmark-icon-tags-li {
+	display: flex;
 	font-size: 0.86em;
 	color: var(--clr-light);
+}
+
+.main__bookmark-icon-search-tags-ul {
+	margin-top: 0.3em;
 }
 
 .main__bookmark-icon-tags-form {

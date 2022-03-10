@@ -1,5 +1,6 @@
 import React from 'react'
 import { TiLink, TiEdit, TiTimes, TiPlus } from 'react-icons/ti'
+import { HiHashtag } from 'react-icons/hi'
 
 class BookmarkItem extends React.Component {
 	constructor() {
@@ -10,7 +11,8 @@ class BookmarkItem extends React.Component {
 		this.ellipsis = this.ellipsis.bind(this)
 		this.formatDate = this.formatDate.bind(this)
 		this.handleControls = this.handleControls.bind(this)
-		this.handleTags = this.handleTags.bind(this)
+		this.handleCurrentTags = this.handleCurrentTags.bind(this)
+		this.handleAddedTags = this.handleAddedTags.bind(this)
 	}
 
 	ellipsis(str, chars) {
@@ -37,16 +39,36 @@ class BookmarkItem extends React.Component {
 		}
 	}
 
-	handleTags() {
-		if (this.props.bookmarkData.tags.length > 0) {
-			return (
-				<ul className="main__bookmark-icon-tags-ul">
+	handleCurrentTags() {
+		return (
+			<ul className="main__bookmark-icon-tags-ul">
+				{this.props.bookmarkData.tags.map(tag => (
+					<li className="main__bookmark-icon-tags-li">
+						<div className="main__bookmark-icon-tags-li-hastag">
+							<HiHashtag />
+						</div>
+						{tag.name}
+					</li>
+				))}
+			</ul>
+		)
+	}
+
+	handleAddedTags() {
+		return (
+			<div>
+				<ul className="main__bookmark-icon-tags-ul main__bookmark-icon-search-tags-ul">
 					{this.props.bookmarkData.tags.map(tag => (
-						<li className="main__bookmark-icon-tags-li">{tag.name}</li>
+						<li className="main__bookmark-icon-tags-li">
+							<div className="main__bookmark-icon-tags-li-hastag">
+								<HiHashtag />
+							</div>
+							git-resource
+						</li>
 					))}
 				</ul>
-			)
-		}
+			</div>
+		)
 	}
 
 	render() {
@@ -92,7 +114,7 @@ class BookmarkItem extends React.Component {
 
 						{this.state.edit ? (
 							<div className="main__bookmark-icon-tags main__bookmark-icon-hidden">
-								{this.handleTags()}
+								{this.handleCurrentTags()}
 								<form className="main__bookmark-icon-tags-form">
 									<input
 										className="main__bookmark-icon-tags-text"
@@ -104,6 +126,8 @@ class BookmarkItem extends React.Component {
 										<TiPlus />
 									</button>
 								</form>
+
+								{this.handleAddedTags()}
 							</div>
 						) : (
 							' '
