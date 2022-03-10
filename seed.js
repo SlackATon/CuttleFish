@@ -1,41 +1,63 @@
 /* Require database and your models */
-const Sequelize = require('sequelize')
-const { db, Bookmark, Tag } = require('./server/db/')
+const { db, User, Bookmark, Tag } = require('./server/db/index')
 
 const seed = async () => {
 	try {
 		await db.sync({ force: true })
 
-		const BOOKMARK_1 = await Bookmark.create({
-			title: 'Sequelize',
-			url: 'https://sequelize.org/',
+		const DEAN = await User.create({
+			username: 'DeanWantsPie',
+			email: 'dean@spn.com',
+			password: 'ilikepie',
+			role: 'admin'
+		})
+
+		const DEAN_BOOKMARK_1 = await DEAN.createBookmark({
+			title: 'Dean Bookmark',
+			url: 'https://pie.com/',
+			description: 'Dean should only have this bookmark. Tagged as "pi-site"'
+		})
+
+		const DEAN_TAG_1 = await Tag.create({ name: 'pi-site', userId: 1 })
+
+		await DEAN_BOOKMARK_1.addTag(DEAN_TAG_1)
+
+		const DEAN_BOOKMARK_2 = await DEAN.createBookmark({
+			title: 'Dean & Castiel Bookmark',
+			url: 'https://both.com/',
 			description:
-				'Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.'
+				'Dean & Castiel should have this bookmark. Dean should have a tag as "dean-only" and castiel should not have a tag.'
 		})
-		const BOOKMARK_2 = await Bookmark.create({
-			title: 'React-Redux',
-			url: 'https://react-redux.js.org/',
-			description: 'Official React bindings for Redux'
+
+		const DEAN_TAG_2 = await Tag.create({ name: 'dean-only', userId: 1 })
+
+		DEAN_BOOKMARK_2.addTag(DEAN_TAG_2)
+
+		const CASTIEL = await User.create({
+			username: 'castiel',
+			email: 'castiel@spn.com',
+			password: 'ilikedean'
 		})
-		const BOOKMARK_3 = await Bookmark.create({
-			title: 'YouTube',
-			url: 'https://www.youtube.com/'
-		})
-		const BOOKMARK_4 = await Bookmark.create({
-			url: 'https://www.fullstackacademy.com/',
+
+		const CASTIEL_BOOKMARK_1 = await CASTIEL.createBookmark({
+			title: 'Dean & Castiel Bookmark',
+			url: 'https://both.com/',
 			description:
-				'Take the first step toward a thriving career in tech with Fullstack Academy.'
+				'Dean & Castiel should have this bookmark. Dean should have a tag as "dean-only" and castiel should not have a tag.'
 		})
 
-		const TAG_1 = await Tag.create({ name: 'documentation' })
-		const TAG_2 = await Tag.create({ name: 'sequelize website' })
-		const TAG_3 = await Tag.create({ name: 'react-redux website' })
-		const TAG_4 = await Tag.create({ name: 'grammly' })
+		const CASTIEL_BOOKMARK_2 = await CASTIEL.createBookmark({
+			title: 'Castiel Bookmark',
+			url: 'https://www.home.com/',
+			description:
+				'Castiel should only have this bookmark He has it tagged as "website", and "home-site"'
+		})
 
-		/*                            RELATIONS                              */
+		const CASTIEL_TAG_1 = await Tag.create({ name: 'website', userId: 2 })
+		const CASTIEL_TAG_2 = await Tag.create({ name: 'home-site', userId: 2 })
 
-		await BOOKMARK_1.addTags([TAG_1, TAG_2])
-		await BOOKMARK_2.addTags([TAG_1, TAG_3])
+		await CASTIEL_BOOKMARK_2.addTag(CASTIEL_TAG_1)
+		await CASTIEL_BOOKMARK_2.addTag(CASTIEL_TAG_2)
 	} catch (err) {
 		console.error(err)
 	}
