@@ -3,11 +3,11 @@ import React from 'react'
 import AuthLeft from './AuthLeft'
 import AuthRight from './AuthRight'
 
-function Auth() {
+function Auth(props) {
 	return (
 		<div className="auth">
 			<AuthLeft />
-			<AuthRight />
+			<AuthRight history={props.history} />
 		</div>
 	)
 }
