@@ -1,0 +1,121 @@
+.auth {
+	display: flex;
+	background-color: var(--clr-dark);
+	color: var(--clr-light);
+}
+
+.auth__left {
+	flex: 1;
+	align-items: center;
+	background: url('http://localhost:3000/loginpicture.svg') top right no-repeat;
+	/* background: url('../public/loginpicture.svg') top right no-repeat; */
+	background-position: 75% 45%;
+	background-size: 80%;
+}
+
+.auth__left-picture {
+	max-height: 100vh;
+}
+
+.auth__right {
+	flex: 1;
+	position: relative;
+}
+
+.auth__alter {
+	position: absolute;
+	right: 1rem;
+	top: 1rem;
+	background-color: transparent;
+	border: 0;
+	display: block;
+	color: inherit;
+}
+
+.auth__form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.auth__form > * {
+	width: 300px;
+}
+
+.auth__heading {
+	font-size: 1.7rem;
+	text-align: left;
+	margin-bottom: 1.3rem;
+}
+
+.auth__input-outer-wrapper + .auth__input-outer-wrapper {
+	margin-top: 1rem;
+}
+
+.auth__email,
+.auth__username,
+.auth__password {
+	font-weight: bold;
+}
+
+.auth__input-wrapper {
+	display: flex;
+	padding: 0.3rem;
+	justify-content: center;
+	align-items: center;
+	border-radius: 7px;
+	border: 2px solid var(--clr-dark-accent);
+	background-color: var(--clr-light);
+	margin-top: 0.2rem;
+}
+
+.form__icon {
+	padding: 0 0.5rem;
+}
+
+.form__icon * {
+	color: var(--clr-dark);
+	font-size: 1.4rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.auth__input {
+	display: flex;
+	padding: 0.8rem;
+	border: 0;
+	background-color: transparent;
+}
+
+.auth__input::placeholder {
+	color: var(--clr-light-dark);
+}
+
+input:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0 50px var(--clr-light) inset;
+	-webkit-text-fill-color: var(--clr-dark);
+}
+
+input:-webkit-autofill:focus {
+	-webkit-box-shadow: 0 0 0 50px var(--clr-light) inset;
+	-webkit-text-fill-color: var(--clr-dark-accent);
+}
+
+.auth__submit {
+	margin-top: 1rem;
+	padding: 0.7rem 0.3rem;
+	display: block;
+	border-radius: 5px;
+}
+
+.auth__password-reset {
+	background-color: transparent;
+	border: 0;
+	margin-top: 1rem;
+	display: block;
+	text-align: left;
+	color: inherit;
+}
