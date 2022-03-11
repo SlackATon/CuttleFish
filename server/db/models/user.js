@@ -1,5 +1,10 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+require('dotenv').config()
+
+const PASSPHRASE = process.env.AUTH
 
 const User = db.define('user', {
 	username: {
@@ -36,5 +41,39 @@ const User = db.define('user', {
 		}
 	}
 })
+
+/* Checks if an instance password matches their encrypted one in the database. */
+User.prototype.decryptPassword = async function (password) {
+	try {
+		const compare = bcrypt.compareSync(password, this.password)
+
+		if (compare) return true
+		else return false
+	} catch (err) {
+		console.log(err)
+	}
+}
+
+/*
+	Decrypts the JWT into an object, return example:
+	{ email: 'dean@email.com, password: $2b$10$/KTUxlFho.y2S6 }
+	Else if password does not decrypt, return 'false'.
+*/
+User.decryptToken = function (token) {
+	try {
+		return jwt.verify(token, PASSPHRASE)
+	} catch (err) {
+		return false
+	}
+}
+
+/*
+	Encrypts an object to be store in local storage using JWT. Example:
+	bnZhdmovT21uUWh2Q3VvMUVERjBVLldUbmlTN0d6Q2JDV1ZxOEhlSENRb
+*/
+
+User.encryptToken = function (obj) {
+	return jwt.sign(obj, PASSPHRASE)
+}
 
 module.exports = User
