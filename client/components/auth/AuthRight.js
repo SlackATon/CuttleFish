@@ -113,9 +113,15 @@ class Auth extends React.Component {
 						</div>
 					</div>
 
+					{this.props.alert ? 'test' : null}
+
 					<button className="auth__submit btn" type="submit">
 						Submit
 					</button>
+
+					{this.props.alert ? (
+						<div className="auth__alert">{this.props.alert}</div>
+					) : null}
 
 					{this.state.signin ? (
 						<button className="auth__password-reset btn">

@@ -111,6 +111,11 @@ input:-webkit-autofill:focus {
 	border-radius: 5px;
 }
 
+.auth__alert {
+	font-weight: bold;
+	margin-top: 0.6rem;
+}
+
 .auth__password-reset {
 	background-color: transparent;
 	border: 0;
