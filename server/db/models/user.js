@@ -84,7 +84,11 @@ User.decryptToken = function (token) {
 */
 
 User.encryptToken = function (obj) {
-	return jwt.sign(obj, PASSPHRASE)
+	try {
+		return jwt.sign(obj, PASSPHRASE)
+	} catch (err) {
+		return false
+	}
 }
 
 module.exports = User
