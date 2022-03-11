@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
+const SALT_ROUNDS = 10
 const PASSPHRASE = process.env.AUTH
 
 const User = db.define('user', {
@@ -39,6 +40,16 @@ const User = db.define('user', {
 		validate: {
 			notEmpty: true
 		}
+	}
+})
+
+/* Takes the user's password and hashes it, before storing it in the database. */
+User.addHook('beforeValidate', async user => {
+	try {
+		user.password = bcrypt.hashSync(user.password, SALT_ROUNDS)
+		console.log(user.username, user.password)
+	} catch (err) {
+		console.error(err)
 	}
 })
 
