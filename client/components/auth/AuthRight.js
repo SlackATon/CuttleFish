@@ -4,15 +4,15 @@ import { HiOutlineMail, HiOutlineUser } from 'react-icons/hi'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { manualSignin } from '../../store/auth'
+import { manualSignin, signup } from '../../store/auth'
 
 class Auth extends React.Component {
 	constructor() {
 		super()
 		this.state = {
-			email: 'dean@spn.com',
-			password: 'ilikepie',
-			username: '',
+			email: 'sam@spn.com',
+			password: 'test1',
+			username: 'moose',
 			signin: true
 		}
 
@@ -31,12 +31,15 @@ class Auth extends React.Component {
 
 	handleSubmit(evt) {
 		evt.preventDefault()
-		const formObj = {
-			email: this.state.email,
-			password: this.state.password
-		}
+		const { email, password, username } = this.state
 
-		this.props.manualSignin(formObj)
+		/* If signin is true, dispach the signin thunk. */
+		if (this.state.signin) {
+			this.props.manualSignin({ email, password })
+		} else {
+			/* Else if dispatch the signup thunk. */
+			this.props.signup({ email, password, username })
+		}
 	}
 
 	render() {
@@ -113,8 +116,6 @@ class Auth extends React.Component {
 						</div>
 					</div>
 
-					{this.props.alert ? 'test' : null}
-
 					<button className="auth__submit btn" type="submit">
 						Submit
 					</button>
@@ -136,7 +137,8 @@ class Auth extends React.Component {
 
 const mapDispatchToProps = (dispatch, { history }) => {
 	return {
-		manualSignin: formObj => dispatch(manualSignin(formObj, history))
+		manualSignin: formObj => dispatch(manualSignin(formObj, history)),
+		signup: formObj => dispatch(signup(formObj, history))
 	}
 }
 
