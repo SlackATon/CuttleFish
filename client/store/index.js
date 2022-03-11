@@ -5,9 +5,14 @@ import thunkMiddleware from 'redux-thunk'
 /* Import reducers. */
 import tags from './tags'
 import bookmarks from './bookmarks'
+import auth from './auth'
 
 /* Combine reducers. */
-const reducer = combineReducers({ tags: tags, bookmarks: bookmarks })
+const reducer = combineReducers({
+	tags: tags,
+	bookmarks: bookmarks,
+	auth: auth
+})
 
 const middleware = applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
 const store = createStore(reducer, middleware)
