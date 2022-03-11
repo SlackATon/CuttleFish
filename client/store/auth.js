@@ -5,12 +5,16 @@ const MANUAL_SIGNIN_ERROR = 'MANUAL_SIGNIN_ERROR'
 const SIGN_UP = 'SIGN_UP'
 const SIGN_UP_ERROR = 'SIGN_UP_ERROR'
 const CLEAR_ALERT = 'CLEAR_ALERT'
+const AUTO_SIGNIN = 'AUTO_SIGNIN'
+const RESET_STATE = 'RESET_STATE'
 
 const _manualSignin = token => ({ type: MANUAL_SIGNIN, token })
 const _manualSigninError = alert => ({ type: MANUAL_SIGNIN_ERROR, alert })
 const _signUp = token => ({ type: SIGN_UP, token })
 const _signUpError = alert => ({ type: SIGN_UP_ERROR, alert })
 export const _clearAlert = () => ({ type: CLEAR_ALERT })
+const _autoSignin = token => ({ type: AUTO_SIGNIN, token })
+const _resetState = () => ({ type: RESET_STATE })
 
 export const manualSignin = (formObj, history) => {
 	return async dispatch => {
@@ -72,20 +76,61 @@ export const signup = (formObj, history) => {
 	}
 }
 
-const init = { alert: '', token: '' }
+export const autoSignin = history => {
+	return async dispatch => {
+		try {
+			console.log('dfgdsg')
+			const token = localStorage.getItem('token')
+
+			/*
+				If the user have a token in local storage,
+				verify that it matches a user in the database.
+				Else if the token does not match, clear token,
+				and redirect to home page.
+			*/
+			if (token) {
+				/* Returns true or false. */
+				const { data } = await axios.get('/api/auth/autosignin', {
+					headers: {
+						authorization: token
+					}
+				})
+				console.log('Somrhing')
+				if (data) {
+					const action = _autoSignin(token)
+					console.log('Somrhing')
+					history.push('/') /* Redirects to main page. */
+					dispatch(action)
+				} else {
+					localStorage.clear('token')
+					const action = _resetState()
+					dispatch(action)
+				}
+			}
+		} catch (err) {
+			console.error(err)
+		}
+	}
+}
+
+const init = { alert: '', token: '', correctUser: false }
 
 const authReducer = (state = init, action) => {
 	switch (action.type) {
 		case MANUAL_SIGNIN:
-			return { ...state, alert: '', token: action.token }
+			return { ...state, alert: '', token: action.token, correctUser: true }
 		case MANUAL_SIGNIN_ERROR:
-			return { ...state, token: '', alert: action.alert }
+			return { ...state, token: '', alert: action.alert, correctUser: false }
 		case SIGN_UP:
-			return { ...state, alert: '', token: action.token }
+			return { ...state, alert: '', token: action.token, correctUser: true }
 		case SIGN_UP_ERROR:
-			return { ...state, token: '', alert: action.alert }
+			return { ...state, token: '', alert: action.alert, correctUser: false }
 		case CLEAR_ALERT:
 			return { ...state, alert: '' }
+		case AUTO_SIGNIN:
+			return { alert: '', token: action.token, correctUser: true }
+		case RESET_STATE:
+			return { alert: '', token: '' }
 		default:
 			return state
 	}
