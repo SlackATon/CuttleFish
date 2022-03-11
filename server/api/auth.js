@@ -23,7 +23,7 @@ router.post('/manualsignin', async (req, res, next) => {
 			if (pwd) {
 				/* Sends a token to be stored in local storage for auto signin. */
 				const token = await User.encryptToken({ email, password })
-				return res.send({ alert: 'Redirecting', token })
+				return res.send({ token })
 			}
 
 			return res.send({ alert: 'Password Or Email Does Not Match' })
