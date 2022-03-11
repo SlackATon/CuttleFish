@@ -39,7 +39,7 @@ app.use((req, res, next) => {
 })
 
 /* Sends our index.html (the 'single page' of our SPA). */
-app.get('/', (req, res, next) => {
+app.get('*', (req, res, next) => {
 	res.sendFile(path.join(__dirname, '..', 'index.html'))
 })
 
