@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const { user } = require('pg/lib/defaults')
 const { User } = require('../db/index')
 
 router.post('/manualsignin', async (req, res, next) => {
@@ -30,6 +31,42 @@ router.post('/manualsignin', async (req, res, next) => {
 		}
 
 		res.send({ alert: 'User Does Not Exist' })
+	} catch (err) {
+		next(err)
+	}
+})
+
+router.post('/signup', async (req, res, next) => {
+	try {
+		const { email, password, username, role } = req.body
+
+		/* If the request did not have a 'email', 'password', or 'username'. */
+		if (!email || !password || !username) {
+			return res.send({ alert: 'Someting Went Wrong' })
+		}
+
+		/* Checks if that email and username exist before continuning. */
+		const hasEmail = await User.findOne({ where: { email: email } })
+		const hasUsername = await User.findOne({ where: { username: username } })
+
+		if (hasEmail) {
+			return res.send({ alert: 'Email Already Exist' })
+		} else if (hasUsername) {
+			return res.send({ alert: 'That Username Is Taken' })
+		}
+
+		const user = await User.create({
+			username: username,
+			email: email,
+			password: password,
+			role: role
+		})
+
+		const token = await User.encryptToken({
+			email: user.email,
+			password: user.password
+		})
+		return res.send({ token })
 	} catch (err) {
 		next(err)
 	}
