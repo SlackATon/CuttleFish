@@ -4,7 +4,7 @@ import { HiOutlineMail, HiOutlineUser } from 'react-icons/hi'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { manualSignin, signup } from '../../store/auth'
+import { manualSignin, signup, _clearAlert } from '../../store/auth'
 
 class Auth extends React.Component {
 	constructor() {
@@ -17,15 +17,16 @@ class Auth extends React.Component {
 		}
 
 		this.renderSignup = this.renderSignup.bind(this)
-		this.handleSignin = this.handleSignin.bind(this)
+		this.handleFormData = this.handleFormData.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
 	}
 
 	renderSignup() {
 		this.setState(prvState => ({ signin: !prvState.signin }))
+		this.props.clearAlert()
 	}
 
-	handleSignin(evt) {
+	handleFormData(evt) {
 		this.setState({ [evt.target.name]: evt.target.value })
 	}
 
@@ -43,7 +44,7 @@ class Auth extends React.Component {
 	}
 
 	render() {
-		console.log(this.props.alert)
+		console.log(this.props)
 		return (
 			<div className="auth__right">
 				<button onClick={this.renderSignup} className="auth__alter btn">
@@ -69,7 +70,7 @@ class Auth extends React.Component {
 								id="email"
 								name="email"
 								value={this.state.email}
-								onChange={this.handleSignin}
+								onChange={this.handleFormData}
 							/>
 						</div>
 					</div>
@@ -90,7 +91,7 @@ class Auth extends React.Component {
 									id="username"
 									name="username"
 									value={this.state.username}
-									onChange={this.handleSignin}
+									onChange={this.handleFormData}
 								/>
 							</div>
 						</div>
@@ -111,7 +112,7 @@ class Auth extends React.Component {
 								id="password"
 								name="password"
 								value={this.state.password}
-								onChange={this.handleSignin}
+								onChange={this.handleFormData}
 							/>
 						</div>
 					</div>
@@ -125,7 +126,7 @@ class Auth extends React.Component {
 					) : null}
 
 					{this.state.signin ? (
-						<button className="auth__password-reset btn">
+						<button type="button" className="auth__password-reset btn">
 							Forgot Password
 						</button>
 					) : null}
@@ -138,7 +139,8 @@ class Auth extends React.Component {
 const mapDispatchToProps = (dispatch, { history }) => {
 	return {
 		manualSignin: formObj => dispatch(manualSignin(formObj, history)),
-		signup: formObj => dispatch(signup(formObj, history))
+		signup: formObj => dispatch(signup(formObj, history)),
+		clearAlert: () => dispatch(_clearAlert())
 	}
 }
 
