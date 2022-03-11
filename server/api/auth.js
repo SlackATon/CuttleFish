@@ -72,4 +72,24 @@ router.post('/signup', async (req, res, next) => {
 	}
 })
 
+router.get('/autosignin', async (req, res, next) => {
+	try {
+		const token = req.headers.authorization
+
+		/* If the headers include 'authorization' */
+		if (token) {
+			const match = await User.decryptToken(token)
+
+			/* If the decrypted token matches a user in the database. */
+			if (match) {
+				return res.send(true)
+			}
+		}
+
+		res.send(false)
+	} catch (err) {
+		next(err)
+	}
+})
+
 module.exports = router
