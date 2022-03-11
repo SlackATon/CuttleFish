@@ -1,13 +1,17 @@
 import React from 'react'
 import { BiLockAlt } from 'react-icons/bi'
 import { HiOutlineMail, HiOutlineUser } from 'react-icons/hi'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+
+import { manualSignin } from '../../store/auth'
 
 class Auth extends React.Component {
 	constructor() {
 		super()
 		this.state = {
-			email: '',
-			password: '',
+			email: 'dean@spn.com',
+			password: 'ilikepie',
 			username: '',
 			signin: true
 		}
@@ -27,11 +31,16 @@ class Auth extends React.Component {
 
 	handleSubmit(evt) {
 		evt.preventDefault()
-		console.log(evt)
+		const formObj = {
+			email: this.state.email,
+			password: this.state.password
+		}
+
+		this.props.manualSignin(formObj)
 	}
 
 	render() {
-		console.log(this.state)
+		console.log(this.props.alert)
 		return (
 			<div className="auth__right">
 				<button onClick={this.renderSignup} className="auth__alter btn">
@@ -119,4 +128,16 @@ class Auth extends React.Component {
 	}
 }
 
-export default Auth
+const mapDispatchToProps = (dispatch, { history }) => {
+	return {
+		manualSignin: formObj => dispatch(manualSignin(formObj, history))
+	}
+}
+
+const mapStateToProps = state => {
+	return {
+		alert: state.auth.alert
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Auth)
