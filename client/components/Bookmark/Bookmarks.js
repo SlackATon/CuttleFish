@@ -1,8 +1,8 @@
 import React from 'react'
-import { connect } from 'react-redux'
 
 import Sidebar from './Sidebar/Sidebar'
 import Toolbar from './Toolbar/Toolbar'
+import BookmarkContainer from './BookmarkContainer'
 
 class Bookmarks extends React.Component {
 	constructor() {
@@ -15,7 +15,7 @@ class Bookmarks extends React.Component {
 				<Sidebar />
 				<div className="main">
 					<Toolbar />
-					{/* <BookmarkContainer /> */}
+					<BookmarkContainer />
 				</div>
 			</div>
 		)
