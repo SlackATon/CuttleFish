@@ -57,8 +57,15 @@ const content = (state = init, action) => {
 				...state,
 				byBookmarks: {
 					...state.byBookmarks,
-					...action.data,
-					icon: '/usericons/' + action.data.icon
+					...action.data
+				}
+			}
+		case GET_TAGS:
+			return {
+				...state,
+				byTags: {
+					...state.byTags,
+					...action.data
 				}
 			}
 		default:

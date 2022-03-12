@@ -43,7 +43,7 @@ router.get('/user/bookmarks', async (req, res, next) => {
 						},
 						Tag
 					],
-					attributes: { exclude: ['password', 'role', 'id'] }
+					attributes: []
 				})
 
 				return res.json(userBookmarks)
@@ -67,7 +67,7 @@ router.get('/user/tags', async (req, res, next) => {
 				const userBookmarks = await User.findOne({
 					where: { email: decrypted.email },
 					include: { model: Tag, include: { model: Bookmark } },
-					attributes: { exclude: ['password', 'role', 'id'] }
+					attributes: []
 				})
 
 				return res.json(userBookmarks)
