@@ -33,7 +33,6 @@ class SidebarTag extends React.Component {
 	}
 
 	render() {
-		console.log(this.props.tagDetails.bookmarks)
 		return (
 			<li
 				onClick={this.handleState}

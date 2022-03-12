@@ -63,9 +63,6 @@ class BookmarkItem extends React.Component {
 	}
 
 	render() {
-		console.log('here', this.props.ellipsis)
-		console.log('and here', this.props.dateFormatter)
-
 		return (
 			<div className="main__bookmark">
 				<div className="main__bookmark-title">

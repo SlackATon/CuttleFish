@@ -51,7 +51,6 @@ const User = db.define('user', {
 User.addHook('beforeValidate', async user => {
 	try {
 		user.password = bcrypt.hashSync(user.password, SALT_ROUNDS)
-		console.log(user.username, user.password)
 	} catch (err) {
 		console.error(err)
 	}

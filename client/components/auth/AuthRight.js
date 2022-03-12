@@ -2,7 +2,6 @@ import React from 'react'
 import { BiLockAlt } from 'react-icons/bi'
 import { HiOutlineMail, HiOutlineUser } from 'react-icons/hi'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 
 import { manualSignin, signup, _clearAlert, autoSignin } from '../../store/auth'
 
@@ -48,7 +47,6 @@ class Auth extends React.Component {
 	}
 
 	render() {
-		console.log(this.props)
 		return (
 			<div className="auth__right">
 				<button onClick={this.renderSignup} className="auth__alter btn">

@@ -9,8 +9,6 @@ function BookmarkContainer(props) {
 		props.getBookmarks()
 	}, [])
 
-	console.log('here', props.bookmarks)
-
 	return (
 		<div>
 			{props.bookmarks
