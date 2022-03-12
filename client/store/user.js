@@ -39,7 +39,7 @@ const userReducer = (state = init, action) => {
 			return {
 				...state,
 				username: action.userObj.username,
-				icon: action.userObj.icon
+				icon: '/usericons/' + action.userObj.icon
 			}
 		default:
 			return state
