@@ -23,6 +23,11 @@
 	border-bottom: 2px solid var(--clr-dark-accent);
 }
 
+.sidebar__user-right {
+	width: 70px;
+	height: 70px;
+}
+
 .sidebar__user-image {
 	width: 70px;
 	height: 70px;
@@ -39,7 +44,7 @@
 .sidebar__user-name {
 	margin-bottom: 0.4em;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 }
 
