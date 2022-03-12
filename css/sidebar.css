@@ -38,6 +38,9 @@
 
 .sidebar__user-name {
 	margin-bottom: 0.4em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .sidebar__user-bookmarks,
