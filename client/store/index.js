@@ -3,13 +3,13 @@ import { createLogger } from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 
 /* Import reducers. */
-import content from './content'
+import contentReducer from './content'
 import authReducer from './auth'
 import userReducer from './user'
 
 /* Combine reducers. */
 const reducer = combineReducers({
-	content: content,
+	content: contentReducer,
 	auth: authReducer,
 	user: userReducer
 })

@@ -56,7 +56,7 @@ export const getTags = () => {
 
 const init = { byBookmarks: {}, byTags: {} }
 
-const content = (state = init, action) => {
+const contentReducer = (state = init, action) => {
 	switch (action.type) {
 		case GET_BOOKMARKS:
 			return {
@@ -79,4 +79,4 @@ const content = (state = init, action) => {
 	}
 }
 
-export default content
+export default contentReducer
