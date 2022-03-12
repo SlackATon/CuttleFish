@@ -1,3 +1,5 @@
+/* Store for authentication. */
+
 import axios from 'axios'
 
 const MANUAL_SIGNIN = 'MANUAL_SIGNIN'
@@ -54,7 +56,7 @@ export const signup = (formObj, history) => {
 			} = await axios.post('/api/auth/signup', formObj)
 
 			/*
-				If a token was response from request, set it to store.
+				If a token was a response from request, set it to store.
 				Else a token was not sent, an alert was sent back.
 				Set that alert to store.
 			*/

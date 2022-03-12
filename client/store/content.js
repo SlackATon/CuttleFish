@@ -1,3 +1,5 @@
+/* Store for the user's bookmarks and tags. */
+
 import axios from 'axios'
 
 const GET_BOOKMARKS = 'GET_BOOKMARKS'
@@ -11,16 +13,20 @@ export const getBookmarks = () => {
 		try {
 			const token = localStorage.getItem('token')
 
-			const { data } = await axios.get('/api/content/user/bookmarks', {
-				headers: {
-					authorization: token
-				}
-			})
+			if (token) {
+				const { data } = await axios.get('/api/content/user/bookmarks', {
+					headers: {
+						authorization: token
+					}
+				})
 
-			if (data) {
-				const action = _getBookmarks(data)
-				dispatch(action)
+				if (data) {
+					const action = _getBookmarks(data)
+					dispatch(action)
+				}
 			}
+
+			//! TOFIX if the token is not in local storage, redirect to main page.
 		} catch (err) {
 			console.error(err)
 		}
