@@ -1,7 +1,7 @@
 const router = require('express').Router()
 
 /* Link all your APIs to this file for one export. */
-router.use('/userbookmarks', require('./userbookmarks'))
+router.use('/content', require('./content'))
 router.use('/auth', require('./auth'))
 
 router.use(function (req, res, next) {

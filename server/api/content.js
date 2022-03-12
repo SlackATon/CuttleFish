@@ -24,7 +24,7 @@ router.get('/', async (req, res, next) => {
 	}
 })
 
-router.get('/user', async (req, res, next) => {
+router.get('/user/bookmarks', async (req, res, next) => {
 	try {
 		const token = req.headers.authorization
 
@@ -43,6 +43,30 @@ router.get('/user', async (req, res, next) => {
 						},
 						Tag
 					],
+					attributes: { exclude: ['password', 'role', 'id'] }
+				})
+
+				return res.json(userBookmarks)
+			}
+		}
+
+		res.sendStatus(404)
+	} catch (err) {
+		next(err)
+	}
+})
+
+router.get('/user/tags', async (req, res, next) => {
+	try {
+		const token = req.headers.authorization
+
+		if (token) {
+			const decrypted = await User.decryptToken(token)
+
+			if (decrypted) {
+				const userBookmarks = await User.findOne({
+					where: { email: decrypted.email },
+					include: { model: Tag, include: { model: Bookmark } },
 					attributes: { exclude: ['password', 'role', 'id'] }
 				})
 
