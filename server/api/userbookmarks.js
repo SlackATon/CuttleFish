@@ -24,31 +24,33 @@ router.get('/', async (req, res, next) => {
 	}
 })
 
-router.get('/:email', async (req, res, next) => {
+router.get('/user', async (req, res, next) => {
 	try {
-		const findUser = await User.findOne({
-			where: { email: req.params.email }
-		})
+		const token = req.headers.authorization
 
-		if (findUser) {
-			const userBookmarks = await User.findOne({
-				where: { email: req.params.email },
-				include: [
-					{
-						model: Bookmark,
-						include: {
-							model: Tag
-						}
-					},
-					Tag
-				],
-				attributes: { exclude: ['password', 'role', 'id'] }
-			})
+		if (token) {
+			const decrypted = await User.decryptToken(token)
 
-			return res.json(userBookmarks)
-		} else {
-			res.sendStatus(404)
+			if (decrypted) {
+				const userBookmarks = await User.findOne({
+					where: { email: decrypted.email },
+					include: [
+						{
+							model: Bookmark,
+							include: {
+								model: Tag
+							}
+						},
+						Tag
+					],
+					attributes: { exclude: ['password', 'role', 'id'] }
+				})
+
+				return res.json(userBookmarks)
+			}
 		}
+
+		res.sendStatus(404)
 	} catch (err) {
 		next(err)
 	}
