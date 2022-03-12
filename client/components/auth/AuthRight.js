@@ -4,7 +4,7 @@ import { HiOutlineMail, HiOutlineUser } from 'react-icons/hi'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { manualSignin, signup, _clearAlert } from '../../store/auth'
+import { manualSignin, signup, _clearAlert, autoSignin } from '../../store/auth'
 
 class Auth extends React.Component {
 	constructor() {
@@ -19,6 +19,10 @@ class Auth extends React.Component {
 		this.renderSignup = this.renderSignup.bind(this)
 		this.handleFormData = this.handleFormData.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
+	}
+
+	componentDidMount() {
+		this.props.autoSignin()
 	}
 
 	renderSignup() {
@@ -140,7 +144,8 @@ const mapDispatchToProps = (dispatch, { history }) => {
 	return {
 		manualSignin: formObj => dispatch(manualSignin(formObj, history)),
 		signup: formObj => dispatch(signup(formObj, history)),
-		clearAlert: () => dispatch(_clearAlert())
+		clearAlert: () => dispatch(_clearAlert()),
+		autoSignin: () => dispatch(autoSignin(history))
 	}
 }
 
