@@ -3,40 +3,44 @@ import { FiBookmark, FiHash } from 'react-icons/fi'
 import { MdAlternateEmail } from 'react-icons/md'
 import { connect } from 'react-redux'
 
-import { getBookmarks } from './../../../store/userBookmarks'
+import { getInfo } from './../../../store/user'
+import { getBookmarks, getTags } from './../../../store/content'
 
 function SidebarUser(props) {
-	const bookmarksCount = () => {
-		if (props.bookmarks) {
+	const handleBoomarks = () => {
+		if (props.bookmarksTotal) {
 			return (
 				<div>
-					<FiHash /> {props.bookmarks.length + ' bookmarks'}
+					<FiHash /> {props.bookmarksTotal + ' bookmarks'}
 				</div>
 			)
-		} else {
-			return 'no bookmarks'
 		}
+
+		return 'No Bookmarks'
 	}
 
-	const tagCount = () => {
-		if (props.tags) {
+	const handleTagsTotal = () => {
+		if (props.tagsTotal) {
 			return (
 				<div>
-					<FiBookmark /> {props.tags.length + ' tags'}
+					<FiBookmark /> {props.tagsTotal + ' tags'}
 				</div>
 			)
-		} else {
-			return 'no tags'
 		}
+
+		return 'No Tags'
 	}
+
 	useEffect(() => {
+		props.getInfo()
 		props.getBookmarks()
+		props.getTags()
 	}, [])
-	console.log(props.icon)
+
 	return (
 		<div className="sidebar__user">
 			<div className="sidebar__user-right">
-				<img className="sidebar__user-image" src={props.icon} alt="" />
+				<img className="sidebar__user-image" src={props.icon} alt="user icon" />
 			</div>
 			<div className="sidebar__user-left">
 				<h3 className="sidebar__user-row sidebar__user-name">
@@ -44,22 +48,37 @@ function SidebarUser(props) {
 					{props.username}
 				</h3>
 				<div className="sidebar__user-row sidebar__user-bookmarks">
-					{bookmarksCount()}
+					{handleBoomarks()}
 				</div>
-				<div className="sidebar__user-row sidebar__user-tags">{tagCount()}</div>
+				<div className="sidebar__user-row sidebar__user-tags">
+					{handleTagsTotal()}
+				</div>
 			</div>
 		</div>
 	)
 }
 
 const mapStateToProps = state => {
+	const bookmarksTotal = state.content.byBookmarks.bookmarks
+		? state.content.byBookmarks.bookmarks.length
+		: 0
+
+	const tagsTotal = state.content.byTags.tags ? state.content.byTags.tags.length : 0
+
 	return {
-		bookmarks: state.userBookmarks.bookmarks,
-		tags: state.userBookmarks.tags,
-		icon: state.userBookmarks.icon,
-		username: state.userBookmarks.username
+		username: state.user.username,
+		icon: state.user.icon,
+		bookmarksTotal: bookmarksTotal,
+		tagsTotal: tagsTotal
 	}
 }
-const mapDispatchToProps = dispatch => ({ getBookmarks: () => dispatch(getBookmarks()) })
+
+const mapDispatchToProps = dispatch => {
+	return {
+		getInfo: () => dispatch(getInfo()),
+		getBookmarks: () => dispatch(getBookmarks()),
+		getTags: () => dispatch(getTags())
+	}
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(SidebarUser)
