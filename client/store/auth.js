@@ -79,7 +79,6 @@ export const signup = (formObj, history) => {
 export const autoSignin = history => {
 	return async dispatch => {
 		try {
-			console.log('dfgdsg')
 			const token = localStorage.getItem('token')
 
 			/*
@@ -95,10 +94,10 @@ export const autoSignin = history => {
 						authorization: token
 					}
 				})
-				console.log('Somrhing')
+
 				if (data) {
 					const action = _autoSignin(token)
-					console.log('Somrhing')
+
 					history.push('/') /* Redirects to main page. */
 					dispatch(action)
 				} else {

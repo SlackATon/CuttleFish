@@ -3,14 +3,12 @@ import { createLogger } from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 
 /* Import reducers. */
-import tags from './tags'
-import bookmarks from './bookmarks'
+import userBookmarks from './userBookmarks'
 import auth from './auth'
 
 /* Combine reducers. */
 const reducer = combineReducers({
-	tags: tags,
-	bookmarks: bookmarks,
+	userBookmarks: userBookmarks,
 	auth: auth
 })
 
