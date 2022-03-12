@@ -1,28 +1,21 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-import Sidebar from './Sidebar/Sidebar'
-import Toolbar from './Toolbar/Toolbar'
-import BookmarkContainer from './Bookmark/BookmarkContainer'
+import { autoSignin } from '../store/auth'
 
 class Main extends React.Component {
-	constructor() {
-		super()
+	componentDidMount() {
+		this.props.autoSignin()
 	}
 
-	componentDidMount() {}
-
 	render() {
-		return (
-			<div className="grid">
-				{/* <Sidebar />
-			<div className="main">
-				<Toolbar />
-				<BookmarkContainer />
-			</div> */}
-				inside main
-			</div>
-		)
+		return <h1 className="grid">inside main</h1>
 	}
 }
 
-export default Main
+const mapDispatchToProps = (dispatch, { history }) => {
+	return {
+		autoSignin: () => dispatch(autoSignin(history))
+	}
+}
+export default connect(null, mapDispatchToProps)(Main)

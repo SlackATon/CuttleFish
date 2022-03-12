@@ -9,9 +9,6 @@ function Routes() {
 		<Router>
 			<Switch>
 				<Route exact path="/" component={Main} />
-				{/* {localStorage.getItem('token') ? null : (
-					<Route path="/signin" component={Auth} />
-				)} */}
 				<Route path="/signin" component={Auth} />
 			</Switch>
 		</Router>
