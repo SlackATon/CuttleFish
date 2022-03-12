@@ -40,6 +40,10 @@ const User = db.define('user', {
 		validate: {
 			notEmpty: true
 		}
+	},
+	icon: {
+		type: Sequelize.STRING,
+		defaultValue: 'default.png'
 	}
 })
 
