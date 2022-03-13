@@ -3,26 +3,38 @@ import { FiSettings, FiLogOut } from 'react-icons/fi'
 import { connect } from 'react-redux'
 
 import { resetState } from '../../../store/auth'
+import { _showSidebarModal } from '../../../store/app'
+
+import Modal from './Modal'
 
 class SidebarControls extends React.Component {
 	constructor() {
 		super()
 
 		this.handleSignout = this.handleSignout.bind(this)
+		this.handleModal = this.handleModal.bind(this)
 	}
 
 	handleSignout() {
 		this.props.resetState()
 	}
 
+	handleModal() {
+		this.props.showSidebarModal()
+	}
+
 	render() {
 		return (
 			<div className="sidebar-settings">
 				<div className="sidebar-settings-controls">
-					<button className="sidebar-settings__btn" type="button">
+					<button
+						onClick={this.handleModal}
+						className="sidebar-settings__btn"
+						type="button">
 						<FiSettings /> Controls
 					</button>
 				</div>
+
 				<div className="sidebar-settings-signout">
 					<button
 						onClick={this.handleSignout}
@@ -31,15 +43,24 @@ class SidebarControls extends React.Component {
 						<FiLogOut /> Signout
 					</button>
 				</div>
+
+				{this.props.sidebarModal ? <Modal /> : null}
 			</div>
 		)
 	}
 }
 
-const mapDispatchToProps = (dispatch, { history }) => {
+const mapStateToProps = state => {
 	return {
-		resetState: () => dispatch(resetState(history))
+		sidebarModal: state.app.sidebarModal
 	}
 }
 
-export default connect(null, mapDispatchToProps)(SidebarControls)
+const mapDispatchToProps = (dispatch, { history }) => {
+	return {
+		resetState: () => dispatch(resetState(history)),
+		showSidebarModal: () => dispatch(_showSidebarModal())
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SidebarControls)

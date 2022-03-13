@@ -7,13 +7,15 @@ import contentReducer from './content'
 import authReducer from './auth'
 import userReducer from './user'
 import helperReducer from './helper'
+import appReducer from './app'
 
 /* Combine reducers. */
 const reducer = combineReducers({
 	content: contentReducer,
 	auth: authReducer,
 	user: userReducer,
-	helper: helperReducer
+	helper: helperReducer,
+	app: appReducer
 })
 
 const middleware = applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
