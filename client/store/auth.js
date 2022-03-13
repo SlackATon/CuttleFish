@@ -9,6 +9,7 @@ const SIGN_UP_ERROR = 'SIGN_UP_ERROR'
 const CLEAR_ALERT = 'CLEAR_ALERT'
 const AUTO_SIGNIN = 'AUTO_SIGNIN'
 const RESET_STATE = 'RESET_STATE'
+const CHECK_TOKEN = 'CHECK_TOKEN'
 
 const _manualSignin = token => ({ type: MANUAL_SIGNIN, token })
 const _manualSigninError = alert => ({ type: MANUAL_SIGNIN_ERROR, alert })
@@ -17,6 +18,7 @@ const _signUpError = alert => ({ type: SIGN_UP_ERROR, alert })
 export const _clearAlert = () => ({ type: CLEAR_ALERT })
 const _autoSignin = token => ({ type: AUTO_SIGNIN, token })
 const _resetState = () => ({ type: RESET_STATE })
+const _checkToken = () => ({ type: CHECK_TOKEN })
 
 export const manualSignin = (formObj, history) => {
 	return async dispatch => {
@@ -114,6 +116,7 @@ export const autoSignin = history => {
 	}
 }
 
+/* User for when the users click the signout button. */
 export const resetState = history => {
 	return dispatch => {
 		localStorage.clear('token')
@@ -121,6 +124,18 @@ export const resetState = history => {
 
 		const action = _resetState()
 		dispatch(action)
+	}
+}
+
+export const checkToken = history => {
+	return dispatch => {
+		const token = localStorage.getItem('token')
+
+		if (!token) {
+			const action = _checkToken()
+			history.push('/signin')
+			dispatch(action)
+		}
 	}
 }
 
