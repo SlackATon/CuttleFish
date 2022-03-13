@@ -83,6 +83,7 @@
 
 .sidebar__tag-li {
 	background-color: var(--clr-dark-light);
+	border-radius: 4px;
 }
 
 .sidebar__tag-li + .sidebar__tag-li {
