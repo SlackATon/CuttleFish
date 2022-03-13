@@ -1,0 +1,131 @@
+.landingPage-container {
+	background: var(--clr-dark);
+}
+
+.landingPage {
+	margin: auto;
+	width: 80vw;
+}
+
+.landingPage-one,
+.landingPage-footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.landingPage-header {
+	padding: 2rem 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.landingPage-header-logo {
+	height: 5rem;
+}
+
+.landingPage__current-language-wrapper {
+	display: flex;
+	align-items: center;
+	grid-gap: 0.7rem;
+}
+
+.landingPage__current-icon > * {
+	color: var(--clr-light);
+	font-size: 1.2rem;
+	display: flex;
+	align-items: center;
+}
+
+.landingPage__current-language {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 0.9rem;
+	color: var(--clr-light);
+}
+
+.landingPage-one {
+	background-image: url('http://localhost:3000/landingpicture.svg');
+	background-repeat: no-repeat;
+	background-position: 100% 50%;
+	height: 80vh;
+	flex-grow: 3;
+}
+
+.landingPage-info {
+	width: 39rem;
+}
+
+.landingPage-one__h2 {
+	font-size: 4.2rem;
+	color: var(--clr-light);
+}
+
+.landingPage-one__h3 {
+	margin-top: 0.5rem;
+	font-size: 1.9rem;
+	color: var(--clr-light-dark);
+}
+
+.landingPage-btn {
+	margin-top: 2rem;
+	padding: 1rem;
+	border-radius: 8px;
+	border: 0;
+	background-color: var(--clr-light);
+}
+
+.landingPage a {
+	font-weight: bold;
+	font-size: 1.3rem;
+	color: var(--clr-dark-accent);
+}
+
+.landingPage-btn:hover {
+	background-color: var(--clr-light-dark);
+	color: var(--clr-dark-light);
+}
+
+.landingPage-two {
+}
+
+.landingPage-footer {
+	padding: 2rem 0;
+}
+
+.landingPage-footer__brand {
+}
+
+.landingPage-footer__brand-logo {
+	width: 8.7rem;
+}
+
+.landingPage-footer__copyright {
+	margin-top: 0.5rem;
+	font-weight: bold;
+
+	color: var(--clr-light-dark);
+}
+
+.landingPage-footer__contact {
+	width: 25rem;
+}
+
+.landingPage-footer__contact-heading {
+	font-weight: bold;
+	font-size: 1.3rem;
+	color: var(--clr-light);
+}
+
+.landingPage-footer__contact-desc {
+	margin-top: 0.5rem;
+	font-size: 1.1rem;
+	color: var(--clr-light-dark);
+}
+
+.landingPage-footer__contact-email {
+	margin-top: 0.5rem;
+	font-size: 0.95rem;
+	color: var(--clr-light-dark);
+}

@@ -8,7 +8,7 @@
 	flex: 1;
 	align-items: center;
 	background: url('http://localhost:3000/loginpicture.svg') top right no-repeat;
-	/* background: url('../public/loginpicture.svg') top right no-repeat; */
+	/* background: url('.././public/landingpicture.svg') top right no-repeat; */
 	background-position: 75% 45%;
 	background-size: 80%;
 }

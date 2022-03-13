@@ -6,6 +6,7 @@
 @import url('main-bookmark.css');
 @import url('theme--example.css');
 @import url('auth');
+@import url('landing-page.css');
 /* @import url('state-change.css'); */
 
 /*
@@ -18,12 +19,18 @@
 	--ff-primary: 'Roboto', sans-serif;
 	--fs-primary: 16px;
 
-	--clr-dark: #1e1e1e;
+	/* --clr-dark: #1e1e1e;
 	--clr-dark-accent: rgb(42, 38, 38);
 	--clr-dark-light: #2f2e2e;
-
 	--clr-light: rgb(224, 223, 223);
-	--clr-light-dark: rgb(166 166 166);
+	--clr-light-dark: rgb(166 166 166); */
+
+	--clr-dark: #1f0235;
+	--clr-dark-accent: #3d0e61;
+	--clr-dark-light: #260b3b;
+
+	--clr-light: #ddd7f5;
+	--clr-light-dark: #bdacd4;
 }
 
 /*
