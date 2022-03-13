@@ -1,5 +1,5 @@
 import React from 'react'
-import { BiLockAlt } from 'react-icons/bi'
+import { BiLockAlt, BiLockOpenAlt } from 'react-icons/bi'
 import { HiOutlineMail, HiOutlineUser } from 'react-icons/hi'
 import { connect } from 'react-redux'
 
@@ -9,14 +9,16 @@ class Auth extends React.Component {
 	constructor() {
 		super()
 		this.state = {
-			email: 'sam@spn.com',
-			password: 'test1',
-			username: 'moose',
-			signin: true
+			email: 'dean@spn.com',
+			password: 'ilikepie',
+			username: '',
+			signin: true,
+			showPassword: false
 		}
 
 		this.renderSignup = this.renderSignup.bind(this)
 		this.handleFormData = this.handleFormData.bind(this)
+		this.handlePassword = this.handlePassword.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
 	}
 
@@ -33,6 +35,10 @@ class Auth extends React.Component {
 		this.setState({ [evt.target.name]: evt.target.value })
 	}
 
+	handlePassword() {
+		this.setState(prv => ({ showPassword: !prv.showPassword }))
+	}
+
 	handleSubmit(evt) {
 		evt.preventDefault()
 		const { email, password, username } = this.state
@@ -47,6 +53,7 @@ class Auth extends React.Component {
 	}
 
 	render() {
+		console.log(this.state.showPassword)
 		return (
 			<div className="auth__right">
 				<button onClick={this.renderSignup} className="auth__alter btn">
@@ -104,13 +111,17 @@ class Auth extends React.Component {
 							Password
 						</label>
 						<div className="auth__input-wrapper">
-							<div className="form__icon">
-								<BiLockAlt />
+							<div onClick={this.handlePassword} className="form__icon">
+								{this.state.showPassword ? (
+									<BiLockOpenAlt />
+								) : (
+									<BiLockAlt />
+								)}
 							</div>
 							<input
 								placeholder="Your Password"
 								className="auth__input"
-								type="text"
+								type={this.state.showPassword ? 'text' : 'password'}
 								id="password"
 								name="password"
 								value={this.state.password}
