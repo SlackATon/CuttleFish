@@ -114,6 +114,16 @@ export const autoSignin = history => {
 	}
 }
 
+export const resetState = history => {
+	return dispatch => {
+		localStorage.clear('token')
+		history.push('/')
+
+		const action = _resetState()
+		dispatch(action)
+	}
+}
+
 const init = { alert: '', token: '', correctUser: false }
 
 const authReducer = (state = init, action) => {

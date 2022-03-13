@@ -5,13 +5,13 @@ import SidebarSearch from './SidebarSearch'
 import SidebarTagContainer from './SidebarTagContainer'
 import SidebarControls from './SidebarControls'
 
-function Sidebar() {
+function Sidebar(props) {
 	return (
 		<div className="sidebar">
 			<img className="sidebar__logo" src="logo.svg" alt="brand logo" />
 			<SidebarUser />
 			<SidebarSearch />
-			<SidebarControls />
+			<SidebarControls history={props.history} />
 			<SidebarTagContainer />
 		</div>
 	)

@@ -12,7 +12,7 @@ class Bookmarks extends React.Component {
 	render() {
 		return (
 			<div className="grid">
-				<Sidebar />
+				<Sidebar history={this.props.history} />
 				<div className="main">
 					<Toolbar />
 					<BookmarkContainer />
