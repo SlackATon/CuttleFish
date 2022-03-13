@@ -15,7 +15,6 @@
 .landingPage-footer__copyright {
 	margin-top: 0.5rem;
 	font-weight: bold;
-
 	color: var(--clr-light-dark);
 }
 
@@ -35,7 +34,13 @@
 	color: var(--clr-light-dark);
 }
 
-.landingPage-footer__contact-email {
+/* .landingPage-footer__contact-email {
+	margin-top: 0.5rem;
+	font-size: 0.95rem;
+	color: var(--clr-light-dark);
+} */
+
+.landingPage-footer__contact-email a {
 	margin-top: 0.5rem;
 	font-size: 0.95rem;
 	color: var(--clr-light-dark);

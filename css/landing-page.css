@@ -14,37 +14,6 @@
 	align-items: center;
 }
 
-.landingPage-header {
-	padding: 2rem 0;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.landingPage-header-logo {
-	height: 5rem;
-}
-
-.landingPage__current-language-wrapper {
-	display: flex;
-	align-items: center;
-	grid-gap: 0.7rem;
-}
-
-.landingPage__current-icon > * {
-	color: var(--clr-light);
-	font-size: 1.2rem;
-	display: flex;
-	align-items: center;
-}
-
-.landingPage__current-language {
-	font-weight: bold;
-	text-transform: uppercase;
-	font-size: 0.9rem;
-	color: var(--clr-light);
-}
-
 .landingPage-one {
 	background-image: url('http://localhost:3000/landingpicture.svg');
 	background-repeat: no-repeat;
@@ -74,10 +43,10 @@
 	border-radius: 8px;
 	border: 0;
 	background-color: var(--clr-light);
+	transition: all 0.5s ease;
 }
 
 .landingPage a {
-	font-weight: bold;
 	font-size: 1.3rem;
 	color: var(--clr-dark-accent);
 }

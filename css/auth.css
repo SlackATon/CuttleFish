@@ -8,6 +8,7 @@
 	color: var(--clr-light);
 	margin: auto;
 	width: 80vw;
+	justify-content: space-between;
 }
 
 .auth__left {
@@ -15,9 +16,9 @@
 	align-items: center;
 	background: url('http://localhost:3000/loginpicture.svg');
 	background-size: 80%;
-
 	background-repeat: no-repeat;
-	background-position: 0% 50%;
+	background-position: 50% 50%;
+	/* background-color: var(--clr-dark-light); */
 }
 
 .auth__left-picture {
@@ -26,16 +27,7 @@
 
 .auth__right {
 	flex: 1;
-}
-
-.auth__alter {
-	position: absolute;
-	right: 1rem;
-	top: 1rem;
-	background-color: transparent;
-	border: 0;
-	display: block;
-	color: inherit;
+	/* background-color: var(--clr-dark-light); */
 }
 
 .auth__form {
@@ -44,6 +36,15 @@
 	justify-content: center;
 	align-items: center;
 	height: 90vh;
+}
+
+.auth__alter {
+	background-color: transparent;
+	text-align: left;
+	border: 0;
+	display: block;
+	color: inherit;
+	margin-bottom: 2.3rem;
 }
 
 .auth__form > * {
@@ -114,7 +115,16 @@ input:-webkit-autofill:focus {
 	margin-top: 1rem;
 	padding: 0.7rem 0.3rem;
 	display: block;
+	border: 0;
 	border-radius: 5px;
+	background-color: var(--clr-light);
+	color: var(--clr-dark-accent);
+	transition: all 0.5s ease;
+}
+
+.auth__submit:hover {
+	background-color: var(--clr-light-dark);
+	color: var(--clr-dark-light);
 }
 
 .auth__alert {
