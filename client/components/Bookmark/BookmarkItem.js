@@ -14,8 +14,6 @@ class BookmarkItem extends React.Component {
 		}
 
 		this.handleControls = this.handleControls.bind(this)
-		this.handleCurrentTags = this.handleCurrentTags.bind(this)
-		this.handleAddedTags = this.handleAddedTags.bind(this)
 		this.handleDelete = this.handleDelete.bind(this)
 	}
 
@@ -30,38 +28,6 @@ class BookmarkItem extends React.Component {
 				edit: !prvState.edit
 			}))
 		}
-	}
-
-	/* Will display the current tags for that bookmark. */
-	handleCurrentTags() {
-		return (
-			<ul className="main__bookmark-icon-tags-ul">
-				{this.props.bookmarkData.tags.map(tag => (
-					<li key={tag.id} className="main__bookmark-icon-tags-li">
-						<div className="main__bookmark-icon-tags-li-hastag">
-							<HiHashtag />
-						</div>
-						{tag.name}
-					</li>
-				))}
-			</ul>
-		)
-	}
-
-	/* Will display previos tags as suggestions. */
-	handleAddedTags() {
-		return (
-			<div>
-				<ul className="main__bookmark-icon-tags-ul main__bookmark-icon-search-tags-ul">
-					<li className="main__bookmark-icon-tags-li">
-						<div className="main__bookmark-icon-tags-li-hastag">
-							<HiHashtag />
-						</div>
-						git-resource
-					</li>
-				</ul>
-			</div>
-		)
 	}
 
 	handleDelete() {
@@ -100,30 +66,9 @@ class BookmarkItem extends React.Component {
 					</div>
 
 					<div className="main__bookmark-icon-wrapper">
-						<div
-							className="main__bookmark-icon"
-							onClick={() => this.handleControls('edit')}>
+						<div className="main__bookmark-icon">
 							<TiEdit />
 						</div>
-
-						{this.state.edit ? (
-							<div className="main__bookmark-icon-tags main__bookmark-icon-hidden">
-								{this.handleCurrentTags()}
-								<form className="main__bookmark-icon-tags-form">
-									<input
-										className="main__bookmark-icon-tags-text"
-										type="text"
-									/>
-									<button
-										type="submit"
-										className="main__bookmark-icon-tags-btn">
-										<TiPlus />
-									</button>
-								</form>
-
-								{this.handleAddedTags()}
-							</div>
-						) : null}
 					</div>
 
 					<div
