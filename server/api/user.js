@@ -2,7 +2,7 @@ const router = require('express').Router()
 
 const { User } = require('../db/index')
 
-/* Find all the user by checking localstorage token being sent in headers. */
+/* Find a users username and icon. */
 router.get('/', async (req, res, next) => {
 	try {
 		const token = req.headers.authorization

@@ -2,6 +2,7 @@ const router = require('express').Router()
 const { user } = require('pg/lib/defaults')
 const { User } = require('../db/index')
 
+/* Route for users to manually signin. */
 router.post('/manualsignin', async (req, res, next) => {
 	try {
 		const { email, password } = req.body
@@ -36,6 +37,7 @@ router.post('/manualsignin', async (req, res, next) => {
 	}
 })
 
+/* Route for users to manually signup. */
 router.post('/signup', async (req, res, next) => {
 	try {
 		const { email, password, username, role } = req.body
@@ -72,6 +74,7 @@ router.post('/signup', async (req, res, next) => {
 	}
 })
 
+/* Route for users to automatically signin. */
 router.get('/autosignin', async (req, res, next) => {
 	try {
 		const token = req.headers.authorization

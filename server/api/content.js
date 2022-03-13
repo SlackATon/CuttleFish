@@ -24,6 +24,7 @@ router.get('/', async (req, res, next) => {
 	}
 })
 
+/* Find a users bookmarks. */
 router.get('/user/bookmarks', async (req, res, next) => {
 	try {
 		const token = req.headers.authorization
@@ -56,6 +57,7 @@ router.get('/user/bookmarks', async (req, res, next) => {
 	}
 })
 
+/* Find a users tags. */
 router.get('/user/tags', async (req, res, next) => {
 	try {
 		const token = req.headers.authorization
