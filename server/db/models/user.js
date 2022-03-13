@@ -44,6 +44,14 @@ const User = db.define('user', {
 	icon: {
 		type: Sequelize.STRING,
 		defaultValue: 'default.png'
+	},
+	theme: {
+		type: Sequelize.ENUM('Default', 'Light', 'Dark', 'Forest'),
+		allowNull: false,
+		defaultValue: 'Default',
+		validate: {
+			notEmpty: true
+		}
 	}
 })
 
