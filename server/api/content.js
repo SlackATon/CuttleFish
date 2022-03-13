@@ -123,7 +123,9 @@ router.delete('/bookmarks/:urlId', async (req, res, next) => {
 				if (user) {
 					const deleted = await Bookmark.destroy({
 						where: {
-							id: urlId
+							id: urlId,
+							/* Only delete if the user making the delete request has a FK on this item. */
+							userId: user.id
 						}
 					})
 
