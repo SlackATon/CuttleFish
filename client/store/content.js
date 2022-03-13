@@ -4,9 +4,11 @@ import axios from 'axios'
 
 const GET_BOOKMARKS = 'GET_BOOKMARKS'
 const GET_TAGS = 'GET_TAGS'
+const DELETE_BOOKMARK = 'DELETE_BOOKMARK'
 
 const _getBookmarks = data => ({ type: GET_BOOKMARKS, data })
 const _getTags = data => ({ type: GET_TAGS, data })
+const _deleteBookmark = id => ({ type: DELETE_BOOKMARK, id })
 
 export const getBookmarks = () => {
 	return async dispatch => {
@@ -54,6 +56,27 @@ export const getTags = () => {
 	}
 }
 
+export const deleteBookmark = id => {
+	return async dispatch => {
+		try {
+			const token = localStorage.getItem('token')
+
+			await axios.delete(`/api/content/bookmarks/${id}`, {
+				headers: {
+					authorization: token
+				}
+			})
+
+			//! TOFIX: add condition for 404 response.
+
+			const action = _deleteBookmark(id)
+			dispatch(action)
+		} catch (err) {
+			console.error(err)
+		}
+	}
+}
+
 const init = { byBookmarks: {}, byTags: {} }
 
 const contentReducer = (state = init, action) => {
@@ -74,6 +97,12 @@ const contentReducer = (state = init, action) => {
 					...action.data
 				}
 			}
+		case DELETE_BOOKMARK:
+			const filtered = state.byBookmarks.bookmarks.filter(
+				bookmark => bookmark.id !== action.id
+			)
+
+			return { ...state, byBookmarks: { bookmarks: filtered } }
 		default:
 			return state
 	}

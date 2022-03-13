@@ -4,6 +4,7 @@ import { TiLink, TiEdit, TiTimes, TiPlus } from 'react-icons/ti'
 import { HiHashtag } from 'react-icons/hi'
 
 import { _getEllipsis, _getDateFormatter } from './../../store/helper'
+import { deleteBookmark } from './../../store/content'
 
 class BookmarkItem extends React.Component {
 	constructor() {
@@ -15,6 +16,7 @@ class BookmarkItem extends React.Component {
 		this.handleControls = this.handleControls.bind(this)
 		this.handleCurrentTags = this.handleCurrentTags.bind(this)
 		this.handleAddedTags = this.handleAddedTags.bind(this)
+		this.handleDelete = this.handleDelete.bind(this)
 	}
 
 	componentDidMount() {
@@ -60,6 +62,10 @@ class BookmarkItem extends React.Component {
 				</ul>
 			</div>
 		)
+	}
+
+	handleDelete() {
+		this.props.deleteBookmark(this.props.bookmarkData.id)
 	}
 
 	render() {
@@ -120,7 +126,9 @@ class BookmarkItem extends React.Component {
 						) : null}
 					</div>
 
-					<div className="main__bookmark-icon-wrapper">
+					<div
+						onClick={this.handleDelete}
+						className="main__bookmark-icon-wrapper">
 						<div className="main__bookmark-icon">
 							<TiTimes />
 						</div>
@@ -141,7 +149,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
 	return {
 		getEllipsis: () => dispatch(_getEllipsis()),
-		getDataFormatter: () => dispatch(_getDateFormatter())
+		getDataFormatter: () => dispatch(_getDateFormatter()),
+		deleteBookmark: id => dispatch(deleteBookmark(id))
 	}
 }
 
