@@ -14,7 +14,7 @@ export const getBookmarks = () => {
 			const token = localStorage.getItem('token')
 
 			if (token) {
-				const { data } = await axios.get('/api/content/user/bookmarks', {
+				const { data } = await axios.get('/api/content/bookmarks', {
 					headers: {
 						authorization: token
 					}
@@ -38,7 +38,7 @@ export const getTags = () => {
 		try {
 			const token = localStorage.getItem('token')
 
-			const { data } = await axios.get('/api/content/user/tags', {
+			const { data } = await axios.get('/api/content/tags', {
 				headers: {
 					authorization: token
 				}
