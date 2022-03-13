@@ -3,8 +3,10 @@
 import axios from 'axios'
 
 const GET_INFO = 'GET_INFO'
+const CHANGE_THEME = 'CHANGE_THEME'
 
 const _getInfo = userObj => ({ type: GET_INFO, userObj })
+const _changeTheme = theme => ({ type: CHANGE_THEME, theme })
 
 export const getInfo = () => {
 	return async dispatch => {
@@ -31,7 +33,32 @@ export const getInfo = () => {
 	}
 }
 
-const init = { email: '', username: '', icon: '' }
+export const changeTheme = theme => {
+	return async dispatch => {
+		try {
+			const token = localStorage.getItem('token')
+
+			if (token) {
+				const { data } = await axios.get('/api/user/theme', {
+					headers: {
+						authorization: token
+					}
+				})
+
+				if (data) {
+					const action = _changeTheme(data)
+					dispatch(action)
+				}
+
+				//! TOFIX if the token is not in local storage, redirect to main page.
+			}
+		} catch (err) {
+			console.error(err)
+		}
+	}
+}
+
+const init = { email: '', username: '', icon: '', theme: '' }
 
 const userReducer = (state = init, action) => {
 	switch (action.type) {
@@ -41,6 +68,8 @@ const userReducer = (state = init, action) => {
 				username: action.userObj.username,
 				icon: '/usericons/' + action.userObj.icon
 			}
+		case CHANGE_THEME:
+			return { ...state, theme: action.theme }
 		default:
 			return state
 	}
