@@ -87,13 +87,13 @@ router.post('/bookmarks', async (req, res, next) => {
 					const title = $('title').html()
 					const description = $("meta[name='description']").attr('content')
 
-					await user.createBookmark({
+					const bookmark = await user.createBookmark({
 						url: url,
 						title: title || '',
 						description: description || ''
 					})
 
-					return res.sendStatus(201)
+					return res.json(bookmark)
 				}
 			}
 		}
