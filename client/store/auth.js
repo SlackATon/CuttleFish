@@ -35,7 +35,7 @@ export const manualSignin = (formObj, history) => {
 			if (token) {
 				action = _manualSignin(token)
 				localStorage.setItem('token', token)
-				history.push('/') /* Redirects to main page. */
+				history.push('/bookmarks') /* Redirects to main page. */
 			} else {
 				localStorage.clear('token')
 				action = _manualSigninError(alert)
@@ -66,7 +66,7 @@ export const signup = (formObj, history) => {
 			if (token) {
 				action = _signUp(token)
 				localStorage.setItem('token', token)
-				history.push('/') /* Redirects to main page. */
+				history.push('/bookmarks') /* Redirects to main page. */
 			} else {
 				localStorage.clear('token')
 				action = _signUpError(alert)
@@ -100,7 +100,7 @@ export const autoSignin = history => {
 				if (data) {
 					const action = _autoSignin(token)
 
-					history.push('/') /* Redirects to main page. */
+					history.push('/bookmarks') /* Redirects to main page. */
 					dispatch(action)
 				} else {
 					localStorage.clear('token')
