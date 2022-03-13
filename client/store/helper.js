@@ -12,25 +12,10 @@ const dateFormatter = timestamp => {
 	return `${month} ${date} ${year}`
 }
 
-const GET_ELLIPSIS = 'GET_ELLIPSIS'
-const GET_DATE_FORMATTER = 'GET_DATE_FORMATTER'
-
-export const _getEllipsis = () => {
-	return { type: GET_ELLIPSIS, fn: ellipsis, name: 'ellipsis' }
-}
-
-export const _getDateFormatter = () => {
-	return { type: GET_DATE_FORMATTER, fn: dateFormatter, name: 'dateFormatter' }
-}
-
-const init = {}
+const init = { dateFormatter: dateFormatter, ellipsis: ellipsis }
 
 const helperReducer = (state = init, action) => {
 	switch (action.type) {
-		case GET_ELLIPSIS:
-			return { ...state, [action.name]: action.fn }
-		case GET_DATE_FORMATTER:
-			return { ...state, [action.name]: action.fn }
 		default:
 			return state
 	}

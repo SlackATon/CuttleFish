@@ -1,9 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { TiLink, TiEdit, TiTimes, TiPlus } from 'react-icons/ti'
-import { HiHashtag } from 'react-icons/hi'
 
-import { _getEllipsis, _getDateFormatter } from './../../store/helper'
 import { deleteBookmark } from './../../store/content'
 
 class BookmarkItem extends React.Component {
@@ -15,11 +13,6 @@ class BookmarkItem extends React.Component {
 
 		this.handleControls = this.handleControls.bind(this)
 		this.handleDelete = this.handleDelete.bind(this)
-	}
-
-	componentDidMount() {
-		this.props.getEllipsis()
-		this.props.getDataFormatter()
 	}
 
 	handleControls(type) {
@@ -93,8 +86,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		getEllipsis: () => dispatch(_getEllipsis()),
-		getDataFormatter: () => dispatch(_getDateFormatter()),
 		deleteBookmark: id => dispatch(deleteBookmark(id))
 	}
 }
