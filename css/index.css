@@ -63,3 +63,7 @@ a {
 	display: grid;
 	grid-template-columns: 25em 1fr;
 }
+
+.main {
+	background-color: var(--clr-dark-light);
+}
