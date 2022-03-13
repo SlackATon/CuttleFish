@@ -115,7 +115,9 @@ class Auth extends React.Component {
 							Password
 						</label>
 						<div className="auth__input-wrapper">
-							<div onClick={this.handlePassword} className="form__icon">
+							<div
+								onClick={this.handlePassword}
+								className="form__icon-lock form__icon">
 								{this.state.showPassword ? (
 									<BiLockOpenAlt />
 								) : (

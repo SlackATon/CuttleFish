@@ -38,6 +38,10 @@
 	height: 90vh;
 }
 
+.auth__form > * {
+	width: 300px;
+}
+
 .auth__alter {
 	background-color: transparent;
 	text-align: left;
@@ -45,10 +49,6 @@
 	display: block;
 	color: inherit;
 	margin-bottom: 2.3rem;
-}
-
-.auth__form > * {
-	width: 300px;
 }
 
 .auth__heading {
@@ -88,6 +88,10 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.form__icon-lock {
+	cursor: pointer;
 }
 
 .auth__input {

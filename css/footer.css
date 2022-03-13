@@ -3,9 +3,14 @@
 	margin: auto;
 	width: 80vw;
 	background: var(--clr-dark);
+	/* background-color: #fff;
+	display: flex;
+	justify-content: space-between;
+	align-items: center; */
 }
 
 .landingPage-footer__brand {
+	/* background: red; */
 }
 
 .landingPage-footer__brand-logo {
@@ -29,7 +34,7 @@
 }
 
 .landingPage-footer__contact-desc {
-	margin-top: 0.5rem;
+	margin-top: 1.1rem;
 	font-size: 1.1rem;
 	color: var(--clr-light-dark);
 }
@@ -41,7 +46,8 @@
 } */
 
 .landingPage-footer__contact-email a {
-	margin-top: 0.5rem;
+	display: block;
+	margin-top: 0.8rem;
 	font-size: 0.95rem;
 	color: var(--clr-light-dark);
 }
