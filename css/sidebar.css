@@ -8,18 +8,18 @@
 	background: var(--clr-dark);
 	min-height: 100vh;
 	color: var(--clr-light);
+	padding: 0 1rem;
 }
 
-.sidebar__title {
-	text-transform: uppercase;
-	font-size: 1.3em;
-	padding: 1em 0.5em;
-	border-bottom: 2px solid var(--clr-dark-accent);
+.sidebar__logo {
+	width: 60%;
+	padding: 1.6rem 0rem;
 }
 
 .sidebar__user {
 	display: flex;
 	padding: 1em 0.5em;
+	border-top: 2px solid var(--clr-dark-accent);
 	border-bottom: 2px solid var(--clr-dark-accent);
 }
 
@@ -70,6 +70,7 @@
 
 .sidebar__tag-ul {
 	padding: 0.5em 0.5em;
+	list-style-type: none;
 }
 
 .sidebar__tag-ul::before {

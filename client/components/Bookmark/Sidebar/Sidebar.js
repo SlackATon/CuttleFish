@@ -7,7 +7,7 @@ import SidebarTagContainer from './SidebarTagContainer'
 function Sidebar() {
 	return (
 		<div className="sidebar">
-			<h1 className="sidebar__title">Bookmark Tracker</h1>
+			<img className="sidebar__logo" src="logo.svg" alt="brand logo" />
 			<SidebarUser />
 			<SidebarSearch />
 			<SidebarTagContainer />
