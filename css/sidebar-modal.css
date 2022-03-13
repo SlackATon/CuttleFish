@@ -36,19 +36,28 @@
 
 .sidebar-controls-modal-wrapper {
 	border-radius: 4px;
-	background-color: var(--clr-dark-accent);
+	background-color: transparent;
+	background-color: rgba(0, 0, 0, 0.7);
+	width: 100%;
+	height: 100vh;
 	border: 0;
-	box-shadow: 4px 4px 3px var(--clr-light);
 	position: fixed;
-	top: 15rem;
-	left: 40rem;
-	padding: 1.6rem;
-	width: 50rem;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .sidebar-controls-modal {
 	display: flex;
+
 	flex-direction: column;
 	position: relative;
+
+	border-radius: 4px;
+	background-color: var(--clr-dark-accent);
+	border: 0;
+	padding: 1.6rem;
+	width: 50rem;
 }
 
 .sidebar-modal__h3 {
@@ -59,13 +68,13 @@
 
 .sidebar-modal-close {
 	position: absolute;
-	top: 0;
-	right: 0;
+	top: 1.2rem;
+	right: 1.6rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	border: 0;
-	padding: 0.3rem;
+	padding: 0.4rem;
 	border-radius: 3px;
 	background-color: var(--clr-light-dark);
 }
