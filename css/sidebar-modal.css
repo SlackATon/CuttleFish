@@ -1,0 +1,225 @@
+.sidebar-controls-group__one {
+	--clr-dark: #1f0235;
+	--clr-dark-accent: #3d0e61;
+	--clr-dark-light: #260b3b;
+
+	--clr-light: #ddd7f5;
+	--clr-light-dark: #bdacd4;
+}
+
+.sidebar-controls-group__two {
+	--clr-dark: #111111;
+	--clr-dark-accent: #5f5f5f;
+	--clr-dark-light: #1c1c1c;
+
+	--clr-light: #fdfdfd;
+	--clr-light-dark: #dedede;
+}
+
+.sidebar-controls-group__three {
+	--clr-dark: #0a0a0a;
+	--clr-dark-accent: #323232;
+	--clr-dark-light: #111111;
+
+	--clr-light: #9c9c9c;
+	--clr-light-dark: #636363;
+}
+
+.sidebar-controls-group__four {
+	--clr-dark: #02361d;
+	--clr-dark-accent: #0e6144;
+	--clr-dark-light: #0b3b2a;
+
+	--clr-light: #d7f5ee;
+	--clr-light-dark: #abd4c4;
+}
+
+.sidebar-controls-modal-wrapper {
+	border-radius: 4px;
+	background-color: var(--clr-dark-accent);
+	border: 0;
+	box-shadow: 4px 4px 3px var(--clr-light);
+	position: fixed;
+	top: 15rem;
+	left: 40rem;
+	padding: 1.6rem;
+	width: 50rem;
+}
+.sidebar-controls-modal {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.sidebar-modal__h3 {
+	font-size: 1.2rem;
+	color: var(--clr-light);
+	margin-bottom: 0.5rem;
+}
+
+.sidebar-modal-close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 0;
+	padding: 0.3rem;
+	border-radius: 3px;
+	background-color: var(--clr-light-dark);
+}
+
+.sidebar-modal-close > * {
+	color: var(--clr-dark);
+}
+
+.sidebar-controls-group {
+	border: 2px solid #eee;
+	border-radius: 4px;
+	padding: 0.5rem;
+}
+
+.sidebar-controls-group + .sidebar-controls-group {
+	margin-top: 0.7rem;
+}
+
+.sidebar-controls__input-wrapper {
+	padding: 0.7rem 1rem;
+	display: flex;
+	align-items: center;
+	grid-gap: 0.5rem;
+	background-color: var(--clr-light-dark);
+	color: var(--clr-dark);
+}
+
+/*  */
+
+.modal__bookmark {
+	background: var(--clr-dark);
+	color: var(--clr-light);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.5em 1em;
+	text-align: left;
+	width: 100%;
+	border-radius: 4px;
+	box-shadow: 5px 5px transparent;
+	transition: box-shadow ease-in-out 0.5s;
+}
+
+.modal__bookmark + .modal__bookmark {
+	margin-top: 1em;
+}
+
+.modal__bookmark-title {
+	font-weight: bold;
+	margin-left: 0.5em;
+	min-width: 5em;
+	max-width: 17em;
+}
+
+.modal__bookmark-description {
+	margin-left: 0.5em;
+	font-size: 0.93em;
+	flex: 2 1 auto;
+}
+
+.modal__bookmark-date {
+	margin-left: 0.5em;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-family: monospace;
+	font-size: 0.83em;
+}
+
+.modal__bookmark-controls-wrapper {
+	margin-left: 0.5em;
+	display: flex;
+}
+
+.modal__bookmark-icon-wrapper {
+	position: relative;
+}
+
+.modal__bookmark-icon-wrapper + .modal__bookmark-icon-wrapper {
+	margin-left: 0.5em;
+}
+
+.modal__bookmark-icon {
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	background-color: var(--clr-dark-light);
+	color: var(--clr-light-dark);
+	border-radius: 3px;
+	font-size: 1.2em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: all 0.5s ease;
+}
+
+.modal__bookmark-icon:hover {
+	background-color: var(--clr-dark-accent);
+	color: var(--clr-light);
+}
+.modal__bookmark-icon-tags {
+	background: var(--clr-dark);
+	position: absolute;
+	width: 9.8em;
+	max-height: 15em;
+	padding: 0.3em;
+	top: 3.2em;
+	left: 0;
+	z-index: 1;
+	border-radius: 3px;
+	outline: 3px solid var(--clr-light-dark);
+}
+
+.modal__bookmark-icon-tags-ul {
+	list-style-type: none;
+}
+
+.modal__bookmark-icon-tags-li-hastag {
+}
+
+.modal__bookmark-icon-tags-li {
+	display: flex;
+	font-size: 0.86em;
+	color: var(--clr-light);
+}
+
+.modal__bookmark-icon-search-tags-ul {
+	margin-top: 0.3em;
+}
+
+.modal__bookmark-icon-tags-form {
+	display: flex;
+	margin-top: 0.3em;
+}
+
+.modal__bookmark-icon-tags-text,
+.modal__bookmark-icon-tags-btn {
+	padding: 0.3em;
+}
+
+.modal__bookmark-icon-tags-text {
+	min-width: 0%;
+	background: var(--clr-dark-accent);
+	color: var(--clr-light);
+	font-size: 0.83em;
+	border: 0;
+}
+
+.modal__bookmark-icon-tags-btn {
+	background: var(--clr-dark-accent);
+	color: var(--clr-light);
+	border: 0;
+	margin-left: 0.3em;
+	font-size: 1.2em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
