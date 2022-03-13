@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Header from './Header'
+import Header from '../globals/Header'
 import SectionOne from './SectionOne'
-import Footer from './Footer'
+import Footer from '../globals/Footer'
 
 function LandingPage() {
 	return (

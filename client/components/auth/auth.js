@@ -2,8 +2,8 @@ import React from 'react'
 
 import AuthLeft from './AuthLeft'
 import AuthRight from './AuthRight'
-import Footer from '../LandingPage/Footer'
-import Header from '../LandingPage/Header'
+import Footer from '../globals/Footer'
+import Header from '../globals/Header'
 
 function Auth(props) {
 	return (
