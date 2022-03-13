@@ -79,12 +79,13 @@
 .sidebar__tag-ul {
 	padding: 0.5em 0.5em;
 	list-style-type: none;
+	margin-bottom: 0.4em;
 }
 
 .sidebar__tag-ul::before {
 	content: 'tags';
 	display: block;
-	margin: 0.5em 0 0.3em;
+	margin: 0.4em 0 0.3em;
 	text-transform: uppercase;
 	font-size: 0.9em;
 }
@@ -162,4 +163,28 @@
 .sidebar__bookmark-title,
 .sidebar__bookmark-description {
 	font-size: 0.9em;
+}
+
+.sidebar-settings {
+	inset: 1;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem 0.5rem;
+	border-bottom: 2px solid var(--clr-dark-accent);
+}
+
+.sidebar-settings__btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	grid-gap: 0.3rem;
+	padding: 0.4rem 0.5rem;
+	border: 0;
+	border-radius: 3px;
+	background-color: var(--clr-light-dark);
+	color: var(--clr-dark-accent);
+	font-size: 0.9rem;
+	text-transform: uppercase;
+	font-weight: bold;
 }
