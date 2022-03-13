@@ -62,10 +62,18 @@
 }
 
 .sidebar__search-input {
-	padding: 0.5em 0.5em;
-	border-radius: 3px;
 	display: block;
 	width: 100%;
+	border: 0;
+	border-radius: 3px;
+	padding: 0.8rem 0.68rem;
+	background: var(--clr-light-dark);
+	color: var(--clr-dark);
+}
+
+.sidebar__search-input::placeholder {
+	font-weight: bold;
+	color: var(--clr-dark-accent);
 }
 
 .sidebar__tag-ul {
