@@ -1,0 +1,42 @@
+.landingPage-footer {
+	padding: 2rem 0;
+	margin: auto;
+	width: 80vw;
+	background: var(--clr-dark);
+}
+
+.landingPage-footer__brand {
+}
+
+.landingPage-footer__brand-logo {
+	width: 8.7rem;
+}
+
+.landingPage-footer__copyright {
+	margin-top: 0.5rem;
+	font-weight: bold;
+
+	color: var(--clr-light-dark);
+}
+
+.landingPage-footer__contact {
+	width: 25rem;
+}
+
+.landingPage-footer__contact-heading {
+	font-weight: bold;
+	font-size: 1.3rem;
+	color: var(--clr-light);
+}
+
+.landingPage-footer__contact-desc {
+	margin-top: 0.5rem;
+	font-size: 1.1rem;
+	color: var(--clr-light-dark);
+}
+
+.landingPage-footer__contact-email {
+	margin-top: 0.5rem;
+	font-size: 0.95rem;
+	color: var(--clr-light-dark);
+}
