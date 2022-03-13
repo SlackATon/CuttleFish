@@ -5,10 +5,12 @@ import axios from 'axios'
 const GET_BOOKMARKS = 'GET_BOOKMARKS'
 const GET_TAGS = 'GET_TAGS'
 const DELETE_BOOKMARK = 'DELETE_BOOKMARK'
+const ADD_BOOKMARK = 'ADD_BOOKMARK'
 
-const _getBookmarks = data => ({ type: GET_BOOKMARKS, data })
-const _getTags = data => ({ type: GET_TAGS, data })
+const _getBookmarks = bookmarks => ({ type: GET_BOOKMARKS, bookmarks })
+const _getTags = tags => ({ type: GET_TAGS, tags })
 const _deleteBookmark = id => ({ type: DELETE_BOOKMARK, id })
+const _addBookmark = bookmark => ({ type: ADD_BOOKMARK, bookmark })
 
 export const getBookmarks = () => {
 	return async dispatch => {
@@ -40,16 +42,20 @@ export const getTags = () => {
 		try {
 			const token = localStorage.getItem('token')
 
-			const { data } = await axios.get('/api/content/tags', {
-				headers: {
-					authorization: token
-				}
-			})
+			if (token) {
+				const { data } = await axios.get('/api/content/tags', {
+					headers: {
+						authorization: token
+					}
+				})
 
-			if (data) {
-				const action = _getTags(data)
-				dispatch(action)
+				if (data) {
+					const action = _getTags(data)
+					dispatch(action)
+				}
 			}
+
+			//! TOFIX if the token is not in local storage, redirect to main page.
 		} catch (err) {
 			console.error(err)
 		}
@@ -61,12 +67,15 @@ export const deleteBookmark = id => {
 		try {
 			const token = localStorage.getItem('token')
 
-			await axios.delete(`/api/content/bookmarks/${id}`, {
-				headers: {
-					authorization: token
-				}
-			})
+			if (token) {
+				await axios.delete(`/api/content/bookmarks/${id}`, {
+					headers: {
+						authorization: token
+					}
+				})
+			}
 
+			//! TOFIX if the token is not in local storage, redirect to main page.
 			//! TOFIX: add condition for 404 response.
 
 			const action = _deleteBookmark(id)
@@ -77,6 +86,40 @@ export const deleteBookmark = id => {
 	}
 }
 
+export const addBookmark = url => {
+	return async dispatch => {
+		try {
+			const token = localStorage.getItem('token')
+
+			if (token) {
+				const { data } = await axios.post(
+					`/api/content/bookmarks/`,
+					{ url: url },
+					{
+						headers: {
+							authorization: token
+						}
+					}
+				)
+
+				const action = _addBookmark(data)
+				dispatch(action)
+			}
+
+			//! TOFIX if the token is not in local storage, redirect to main page.
+			//! TOFIX: add condition for 404 response.
+		} catch (err) {
+			console.error(err)
+		}
+	}
+}
+
+/*
+	{ 
+		byBookmarks: { bookmarks: [{}, {}, {}] },
+		byTags: { tags: [{}, {}, {}] }
+	}
+*/
 const init = { byBookmarks: {}, byTags: {} }
 
 const contentReducer = (state = init, action) => {
@@ -86,7 +129,7 @@ const contentReducer = (state = init, action) => {
 				...state,
 				byBookmarks: {
 					...state.byBookmarks,
-					...action.data
+					...action.bookmarks
 				}
 			}
 		case GET_TAGS:
@@ -94,7 +137,7 @@ const contentReducer = (state = init, action) => {
 				...state,
 				byTags: {
 					...state.byTags,
-					...action.data
+					...action.tags
 				}
 			}
 		case DELETE_BOOKMARK:
@@ -103,6 +146,9 @@ const contentReducer = (state = init, action) => {
 			)
 
 			return { ...state, byBookmarks: { bookmarks: filtered } }
+		case ADD_BOOKMARK:
+			const byBookmarks = [...state.byBookmarks.bookmarks, action.bookmark]
+			return { ...state, byBookmarks: { bookmarks: byBookmarks } }
 		default:
 			return state
 	}
