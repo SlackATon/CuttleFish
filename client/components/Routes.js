@@ -1,8 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import Main from './Main'
-import Auth from './auth/auth'
+import Auth from './Auth/Auth'
 import Bookmarks from './Bookmark/Bookmarks'
 import LandingPage from './LandingPage/LandingPage'
 
