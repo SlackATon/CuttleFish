@@ -3,7 +3,7 @@ const db = require('../db')
 
 const Bookmark = db.define('bookmark', {
 	title: Sequelize.STRING,
-	description: Sequelize.STRING,
+	description: Sequelize.TEXT,
 	url: {
 		type: Sequelize.STRING,
 		allowNull: false,
