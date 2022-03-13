@@ -24,7 +24,6 @@
 	background-size: 80%;
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
-	/* background-color: var(--clr-dark-light); */
 }
 
 .auth__left-picture {
@@ -33,7 +32,6 @@
 
 .auth__right {
 	flex: 1;
-	/* background-color: var(--clr-dark-light); */
 }
 
 .auth__form {

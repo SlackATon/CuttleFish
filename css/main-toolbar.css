@@ -31,14 +31,12 @@
 }
 
 .main__top-bar-right {
-	/* background-color: orange; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	grid-gap: 1rem;
 }
 .main__topbar-right-input-form {
-	/* border: 2px solid var(--clr-light-dark); */
 	border-radius: 3px;
 	padding: 0.25rem;
 	height: 100%;
@@ -54,17 +52,14 @@
 	justify-content: center;
 	align-items: center;
 	font-size: 1.5rem;
-	color: var(--clr-dark);
+	color: var(--clr-dark-light);
 	margin: 0 0.5rem;
-	/* background-color: red; */
 }
 
 .main__topbar-right-input {
 	display: inline-block;
 	border: 0;
 	padding: 0.5rem;
-	/* outline: 0; */
-	/* background-color: blue; */
 	background-color: transparent;
 	color: var(--clr-dark);
 }
