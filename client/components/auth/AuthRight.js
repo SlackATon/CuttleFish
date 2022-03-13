@@ -53,21 +53,25 @@ class Auth extends React.Component {
 	}
 
 	render() {
-		console.log(this.state.showPassword)
 		return (
 			<div className="auth__right">
-				<button onClick={this.renderSignup} className="auth__alter btn">
-					{this.state.signin ? 'Signup Instead' : 'Signin Instead'}
-				</button>
-
 				<form className="auth__form" onSubmit={this.handleSubmit}>
+					<button
+						type="button"
+						onClick={this.renderSignup}
+						className="auth__alter btn">
+						{this.state.signin ? 'Signup Instead' : 'Signin Instead'}
+					</button>
+
 					<h2 className="auth__heading">
 						{this.state.signin ? 'Sign In' : 'Create Account'}
 					</h2>
+
 					<div className="auth__input-outer-wrapper email-wrapper">
 						<label className="auth__email" htmlFor="email">
 							Email
 						</label>
+
 						<div className="auth__input-wrapper">
 							<div className="form__icon">
 								<HiOutlineMail />
