@@ -1,0 +1,14 @@
+/*
+    ============
+    Theme: Light
+    ============
+*/
+
+:root {
+	--clr-dark: #111111;
+	--clr-dark-accent: #5f5f5f;
+	--clr-dark-light: #1c1c1c;
+
+	--clr-light: #fdfdfd;
+	--clr-light-dark: #dedede;
+}

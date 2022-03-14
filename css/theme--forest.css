@@ -1,0 +1,14 @@
+/*
+    =============
+    Theme: Forest
+    =============
+*/
+
+:root {
+	--clr-dark: #02361d;
+	--clr-dark-accent: #0e6144;
+	--clr-dark-light: #0b3b2a;
+
+	--clr-light: #d7f5ee;
+	--clr-light-dark: #abd4c4;
+}
