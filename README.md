@@ -16,11 +16,11 @@ The major tools used to build CuttleFish are React, Express.js, Redux, and Seque
 
 ## What Did You Learn?
 
-While building this project I learned how useful Redux is. Instead of passing props down from component to component, it was much easier to manage state in a redux store. This meant React had to only render the data, instead of managing state.
+While building this project I learned how useful Redux is. Instead of passing props down from component to component, it was much easier to manage state in a redux store. React therefore had to render the data instead of managing state.
 
 ## What Challenges Did You Face?
 
-A major challenge I faced during Ascyn week was the database schema. Originally I wanted bookmarks and tags to belong to several users, that way there were no duplicate bookmarks and tags. The same for user's tags. The problem was that when retrieving a user's bookmark, along with the bookmark tags, it also shows tags other users had added. After revisiting this project for sackathon, the database schema was restructured to fix this issue.
+A major challenge I faced during Ascyn week was the database schema. Originally I wanted bookmarks and tags to belong to several users, that way there were no duplicate bookmarks and tags. The same for user's tags. The problem occurred, when a user's bookmark was retrieved, along with the bookmark's tags. The bookmark contained tags added by other users. After revisiting this project for sackathon, the database schema was restructured to fix this issue.
 
 ## What Makes This Different?
 
