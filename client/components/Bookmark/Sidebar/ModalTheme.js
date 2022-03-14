@@ -1,7 +1,15 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { TiLink, TiEdit, TiTimes } from 'react-icons/ti'
 
+import { changeTheme } from '../../../store/user'
+
 function ModalThemeOne(props) {
+	const handleChange = evt => {
+		console.log(evt.target.value)
+		props.changeTheme(evt.target.value)
+	}
+
 	return (
 		<div className={'sidebar-controls-group' + ` ${props.themeClass}`}>
 			<div className="modal__bookmark">
@@ -34,6 +42,7 @@ function ModalThemeOne(props) {
 
 			<div className="sidebar-controls__input-wrapper">
 				<input
+					onChange={handleChange}
 					type="radio"
 					name="theme"
 					id={props.themeTitle}
@@ -45,4 +54,10 @@ function ModalThemeOne(props) {
 	)
 }
 
-export default ModalThemeOne
+const mapDispatchToProps = dispatch => {
+	return {
+		changeTheme: theme => dispatch(changeTheme(theme))
+	}
+}
+
+export default connect(null, mapDispatchToProps)(ModalThemeOne)

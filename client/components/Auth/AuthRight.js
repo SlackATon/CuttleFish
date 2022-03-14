@@ -9,8 +9,8 @@ class Auth extends React.Component {
 	constructor() {
 		super()
 		this.state = {
-			email: 'dean@spn.com',
-			password: 'ilikepie',
+			email: '',
+			password: '',
 			username: '',
 			signin: true,
 			showPassword: false
