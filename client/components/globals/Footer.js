@@ -1,14 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Footer() {
 	return (
 		<footer className="landingPage-footer">
 			<div className="landingPage-footer__brand">
-				<img
-					className="landingPage-footer__brand-logo"
-					src="logo.svg"
-					alt="footer brand logo"
-				/>
+				<Link to="/">
+					<img
+						className="landingPage-footer__brand-logo"
+						src="logo.svg"
+						alt="footer brand logo"
+					/>
+				</Link>
 				<div className="landingPage-footer__copyright">@ 2022</div>
 			</div>
 
