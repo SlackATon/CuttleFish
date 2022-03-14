@@ -39,11 +39,15 @@ export const changeTheme = theme => {
 			const token = localStorage.getItem('token')
 
 			if (token) {
-				const { data } = await axios.get('/api/user/theme', {
-					headers: {
-						authorization: token
+				const { data } = await axios.post(
+					'/api/user/theme',
+					{ theme: theme },
+					{
+						headers: {
+							authorization: token
+						}
 					}
-				})
+				)
 
 				if (data) {
 					const action = _changeTheme(data)
@@ -66,7 +70,8 @@ const userReducer = (state = init, action) => {
 			return {
 				...state,
 				username: action.userObj.username,
-				icon: '/usericons/' + action.userObj.icon
+				icon: '/usericons/' + action.userObj.icon,
+				theme: action.userObj.theme
 			}
 		case CHANGE_THEME:
 			return { ...state, theme: action.theme }
