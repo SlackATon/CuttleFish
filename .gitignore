@@ -3,3 +3,4 @@ package-lock.json
 public/dist
 .env
 data.sql
+seed.js
