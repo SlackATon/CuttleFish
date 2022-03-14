@@ -1,5 +1,4 @@
 const router = require('express').Router()
-const { user } = require('pg/lib/defaults')
 const { User } = require('../db/index')
 
 /* Route for users to manually signin. */

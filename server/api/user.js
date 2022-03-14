@@ -16,7 +16,7 @@ router.get('/', async (req, res, next) => {
 			if (match) {
 				const user = await User.findOne({
 					where: { email: match.email },
-					attributes: ['username', 'icon']
+					attributes: ['username', 'icon', 'theme']
 				})
 
 				return res.send(user)
