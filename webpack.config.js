@@ -16,6 +16,16 @@ module.exports = {
 				use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
 			},
 			{
+				test: /\.svg/,
+				use: {
+					loader: 'svg-url-loader',
+					options: {
+						// make all svg images to work in IE
+						iesafe: true
+					}
+				}
+			},
+			{
 				test: /\.jsx?$/,
 				exclude: /node_modules/,
 				loader: 'babel-loader',

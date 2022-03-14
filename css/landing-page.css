@@ -21,7 +21,7 @@
 }
 
 .landingPage-one {
-	background-image: url('http://localhost:3000/landingpicture.svg');
+	background-image: url('../public/landingpicture.svg');
 	background-repeat: no-repeat;
 	background-position: 100% 50%;
 	height: 80vh;
