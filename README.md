@@ -4,7 +4,7 @@ A website bookmark tracker.
 
 _This project was originally built during Fullstack Academy Async week and continued through stackathon._
 
-![alt text](https://raw.githubusercontent.com/SlackATon/CuttleFish/6099060b60f7480d28c0c690a8b5f6f83039caad/img.png?token=AV47AKRLTMJWUR7ROIN72FLCF5WXA)
+![alt text](img.png)
 
 ## What Problem Does It Solve?
 
