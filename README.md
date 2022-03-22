@@ -8,7 +8,7 @@ _This project was originally built during Fullstack Academy Async week and conti
 
 ## What Problem Does It Solve?
 
-CuttleFish was built to solve a single problem. That problem was having bookmarks across multiple browsers but not having easy access to them. There are several reasons why someone might use different browsers, for example, to differentiate work tasks from social tasks, browser and computer compatibility issues, incompatibility between browser extensions, not wanting to be tracked by websites, or even the browser itself, etc.
+CuttleFish was built to solve a single problem. The problem — having bookmarks across multiple browsers but not having easy access to them. There are several reasons why someone might use different browsers, for example, to differentiate work tasks from social tasks, browser and computer compatibility issues, incompatibility between browser extensions, not wanting to be tracked by websites, or even the browser itself, etc.
 
 ## What Tools Does It Use?
 

@@ -1,7 +1,7 @@
 {
 	"name": "cuttlefish",
 	"version": "1.0.0",
-	"description": "",
+	"description": "CuttleFish is a single-page web application that helps to organize bookmarks.",
 	"main": "index.js",
 	"scripts": {
 		"start": "node server",
@@ -16,7 +16,7 @@
 	"keywords": [
 		"react",
 		"redux",
-		"skeleton"
+		"web app"
 	],
 	"dependencies": {
 		"axios": "^0.18.0",
